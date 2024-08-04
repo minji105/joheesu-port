@@ -9,17 +9,17 @@ import Contact from './pages/Contact';
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <Menu></Menu>
+    <Router>
+      <div className="App">
+        <Menu />
         <Routes>
           <Route path='/' element={<MainPage />} />
           <Route path='/list' element={<List />} />
           <Route path='/list/:category/:title' element={<Project />} />
           <Route path='/contact' element={<Contact />} />
         </Routes>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
 
