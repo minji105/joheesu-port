@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './List.css';
 import CopyrightBottom from '../component/CopyrightBottom';
 
@@ -33,6 +33,7 @@ const divideArrayIntoChunks = (array, chunkCount) => {
 
 function List() {
   const location = useLocation();
+  const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
   const selectedCategory = queryParams.get('category') || 'All';
 
@@ -49,12 +50,12 @@ function List() {
       </div>
 
       <div className="list">
-        <p className={selectedCategory === 'All' ? 'active' : ''} onClick={() => window.location.href = '/#/list?category=All'}>All</p>
-        <p className={selectedCategory === 'Beauty' ? 'active' : ''} onClick={() => window.location.href = '/#/list?category=Beauty'}>Beauty</p>
-        <p className={selectedCategory === 'Personal Work' ? 'active' : ''} onClick={() => window.location.href = '/#/list?category=Personal Work'}>Personal Work</p>
-        <p className={selectedCategory === 'Profile' ? 'active' : ''} onClick={() => window.location.href = '/#/list?category=Profile'}>Profile</p>
-        <p className={selectedCategory === 'Snap' ? 'active' : ''} onClick={() => window.location.href = '/#/list?category=Snap'}>Snap</p>
-        <p className={selectedCategory === 'Log' ? 'active' : ''} onClick={() => window.location.href = '/#/list?category=Log'}>Log</p>
+        <p className={selectedCategory === 'All' ? 'active' : ''} onClick={() => navigate('/list?category=All')}>All</p>
+        <p className={selectedCategory === 'Beauty' ? 'active' : ''} onClick={() => navigate('/list?category=Beauty')}>Beauty</p>
+        <p className={selectedCategory === 'Personal Work' ? 'active' : ''} onClick={() => navigate('/list?category=Personal Work')}>Personal Work</p>
+        <p className={selectedCategory === 'Profile' ? 'active' : ''} onClick={() => navigate('/list?category=Profile')}>Profile</p>
+        <p className={selectedCategory === 'Snap' ? 'active' : ''} onClick={() => navigate('/list?category=Snap')}>Snap</p>
+        <p className={selectedCategory === 'Log' ? 'active' : ''} onClick={() => navigate('/list?category=Log')}>Log</p>
       </div>
 
       <div className="list-container">
