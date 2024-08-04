@@ -1,0 +1,70 @@
+.main-container {
+  width: 98vw;
+  z-index: 1000;
+  color: #fff;
+  position: fixed;
+  bottom: 5px;
+  left: 1vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-container div {
+  width: 49vw;
+  display: flex;
+}
+
+.main-container p {
+  text-transform: uppercase;
+  margin-right: 10vw;
+}
+.main-container p:last-child {
+  margin-right: 0;
+}
+
+.section-title {
+  font-weight: 400;
+  text-align: center;
+  margin-right: -0.5em;
+  color: #fff;
+  padding: 10vh 0;
+}
+
+.section {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 0 auto;
+  visibility: hidden;
+}
+
+.section .wrapper-outer,
+.section .wrapper-inner {
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.section .background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.section .background h2 {
+  z-index: 2;
+}
+
+.section .background .clip-text {
+  overflow: hidden;
+}
+
+.section-title * {
+  will-change: transform;
+}

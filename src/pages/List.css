@@ -1,0 +1,102 @@
+.project-header {
+  position: relative;
+  height: 20vh;
+  width: 98vw;
+  margin: 0 1vw 5px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons p {
+  cursor: pointer;
+  color: rgb(180, 180, 180);
+  transition: color 0.3s ease;
+}
+
+.buttons p:hover {
+  color: #000;
+}
+
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+}
+
+.list {
+  width: 100vw;
+  position: fixed;
+  top: 5px;
+  display: flex;
+  justify-content: flex-end;
+  color: rgb(180, 180, 180);
+  z-index: 100;
+  transition: all 0.5s ease;
+}
+
+.list p {
+  margin-right: 2vw;
+  cursor: pointer;
+}
+
+.list p:hover {
+  color: #000;
+}
+.list p.active {
+  color: #000;
+}
+
+.list-container {
+  width: 98vw;
+  margin: 0 1vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.image-column {
+  width: 23.7vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vw;
+}
+
+.list-container img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.img-container {
+  position: relative;
+}
+
+.project-info {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.5s ease;
+  opacity: 0;
+}
+
+.project-info:hover {
+  opacity: 1;
+}
