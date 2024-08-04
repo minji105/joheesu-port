@@ -49,12 +49,12 @@ function List() {
       </div>
 
       <div className="list">
-        <p className={selectedCategory === 'All' ? 'active' : ''} onClick={() => window.location.href = '/list?category=All'}>All</p>
-        <p className={selectedCategory === 'Beauty' ? 'active' : ''} onClick={() => window.location.href = '/list?category=Beauty'}>Beauty</p>
-        <p className={selectedCategory === 'Personal Work' ? 'active' : ''} onClick={() => window.location.href = '/list?category=Personal Work'}>Personal Work</p>
-        <p className={selectedCategory === 'Profile' ? 'active' : ''} onClick={() => window.location.href = '/list?category=Profile'}>Profile</p>
-        <p className={selectedCategory === 'Snap' ? 'active' : ''} onClick={() => window.location.href = '/list?category=Snap'}>Snap</p>
-        <p className={selectedCategory === 'Log' ? 'active' : ''} onClick={() => window.location.href = '/list?category=Log'}>Log</p>
+        <p className={selectedCategory === 'All' ? 'active' : ''} onClick={() => window.location.href = '/#/list?category=All'}>All</p>
+        <p className={selectedCategory === 'Beauty' ? 'active' : ''} onClick={() => window.location.href = '/#/list?category=Beauty'}>Beauty</p>
+        <p className={selectedCategory === 'Personal Work' ? 'active' : ''} onClick={() => window.location.href = '/#/list?category=Personal Work'}>Personal Work</p>
+        <p className={selectedCategory === 'Profile' ? 'active' : ''} onClick={() => window.location.href = '/#/list?category=Profile'}>Profile</p>
+        <p className={selectedCategory === 'Snap' ? 'active' : ''} onClick={() => window.location.href = '/#/list?category=Snap'}>Snap</p>
+        <p className={selectedCategory === 'Log' ? 'active' : ''} onClick={() => window.location.href = '/#/list?category=Log'}>Log</p>
       </div>
 
       <div className="list-container">
