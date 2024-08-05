@@ -8,16 +8,16 @@ function CopyrightBottom() {
         height: '15vh',
         width: '100vw',
       }}>
-      <p
+      <span
         style={{
           position: 'absolute',
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          fontWeight: 400
+          textWrap: 'nowrap'
         }}>
         © 2024 Heesu Cho. All Rights Reserved
-      </p>
+      </span>
     </div>
   );
 }

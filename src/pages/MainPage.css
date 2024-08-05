@@ -14,10 +14,28 @@
   display: flex;
 }
 
+@media (max-width: 479px) {
+  .main-container {
+    align-items: flex-end;
+    width: 96vw;
+    left: 2vw;
+    bottom: 10px;
+  }
+
+  .main-container div {
+    flex-direction: column;
+  }
+
+  .main-container div p {
+    margin-top: 1vw;
+  }
+}
+
 .main-container p {
   text-transform: uppercase;
   margin-right: 10vw;
 }
+
 .main-container p:last-child {
   margin-right: 0;
 }

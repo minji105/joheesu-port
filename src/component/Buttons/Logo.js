@@ -3,7 +3,7 @@ import React from 'react';
 function Logo() {
   return (
     <>
-      <span
+      <h1
         style={{
           position: 'fixed',
           top: '2vh',
@@ -11,11 +11,8 @@ function Logo() {
           transform: 'translateX(-50%)',
           zIndex: '1000',
           mixBlendMode: 'difference',
-          color: '#fff',
-          fontSize: '22px',
-          letterSpacing: '10px',
-          fontWeight: '700'
-        }}>HEESU</span>
+          color: '#fff'
+        }}>HEESU</h1>
     </>
   );
 }

@@ -23,10 +23,28 @@ function Project() {
   };
 
   const [images, setImages] = useState([]);
+  const [chunkCount, setChunkCount] = useState(4);
 
   const goBack = () => {
     navigate(`/list?category=${encodeURIComponent(category)}`);
   };
+
+  useEffect(() => {
+    const updateChunkCount = () => {
+      if (window.innerWidth <= 768) {
+        setChunkCount(3);
+      } else {
+        setChunkCount(4);
+      }
+    };
+
+    window.addEventListener('resize', updateChunkCount);
+    updateChunkCount();
+
+    return () => {
+      window.removeEventListener('resize', updateChunkCount);
+    };
+  }, []);
 
   useEffect(() => {
     const imagePaths = Array.from(
@@ -56,12 +74,12 @@ function Project() {
     });
   }, [title]);
 
-  const chunkedImages = divideArrayIntoChunks(images, 4);
+  const chunkedImages = divideArrayIntoChunks(images, chunkCount);
 
   return (
     <>
       <div className="project-header">
-        <div className='title'>{title}</div>
+        <h1 className='title'>{title}</h1>
         <div className="buttons">
           <p onClick={goBack}>&#10229; Back To List</p>
           <p>View Grid</p>

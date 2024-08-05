@@ -33,6 +33,17 @@
   cursor: pointer;
 }
 
+@media (max-width: 479px) {
+  .menu-button {
+    left: 2vw;
+    top: 10px;
+  }
+
+  .close-button {
+    left: 4vw;
+  }
+}
+
 .menu-container div:last-child {
   display: flex;
   margin-top: 8vh;
@@ -44,6 +55,7 @@
 .close-button {
   transition: color 0.3s ease;
 }
+
 .menu-container p:hover,
 .close-button:hover {
   color: #fff;

@@ -84,9 +84,40 @@ function MainPage() {
         gotoSection(currentIndex + 1, 1);
       }
     });
+    
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    const handleTouchStart = (e) => {
+      touchStartY = e.changedTouches[0].screenY;
+    };
+
+    const handleTouchEnd = (e) => {
+      touchEndY = e.changedTouches[0].screenY;
+      handleGesture();
+    };
+
+    const handleGesture = () => {
+      if (touchEndY < touchStartY && !animating) {
+        gotoSection(currentIndex + 1, 1);
+      }
+      if (touchEndY > touchStartY && !animating) {
+        gotoSection(currentIndex - 1, -1);
+      }
+    };
+
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("touchend", handleTouchEnd);
 
     gotoSection(0, 1);
+
+    return () => {
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchend", handleTouchEnd);
+    };
   }, []);
+
+
 
   const handleSectionClick = (category, title) => {
     navigate(`/list/${encodeURIComponent(category)}/${encodeURIComponent(title)}`);
@@ -105,6 +136,7 @@ function MainPage() {
         </div>
         <p>scroll</p>
       </div>
+      
       {projectData.map((project, index) => (
         <Section
           key={project.id}

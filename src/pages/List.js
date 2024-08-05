@@ -37,16 +37,35 @@ function List() {
   const queryParams = new URLSearchParams(location.search);
   const selectedCategory = queryParams.get('category') || 'All';
 
+  const [chunkCount, setChunkCount] = useState(4);
+
+  useEffect(() => {
+    const updateChunkCount = () => {
+      if (window.innerWidth <= 768) {
+        setChunkCount(3);
+      } else {
+        setChunkCount(4);
+      }
+    };
+
+    window.addEventListener('resize', updateChunkCount);
+    updateChunkCount();
+
+    return () => {
+      window.removeEventListener('resize', updateChunkCount);
+    };
+  }, []);
+
   const filteredData = selectedCategory === 'All'
     ? projectData
     : projectData.filter(item => item.category === selectedCategory);
 
-  const chunkedImages = divideArrayIntoChunks(filteredData, 4);
+  const chunkedImages = divideArrayIntoChunks(filteredData, chunkCount);
 
   return (
     <>
       <div className="project-header">
-        <div className='title'>PROJECTS</div>
+        <h1 className='title'>PROJECTS</h1>
       </div>
 
       <div className="list">

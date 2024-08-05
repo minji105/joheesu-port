@@ -1,0 +1,15 @@
+.copyright {
+  position: fixed;
+  top: 5px;
+  right: 1vw;
+  z-index: 1000;
+  mix-blend-mode: difference;
+  color: #fff;
+}
+
+@media (max-width:479px) {
+  .copyright {
+    top: 10px;
+    right: 2vw;
+  }
+}
