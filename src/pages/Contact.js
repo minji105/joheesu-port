@@ -58,14 +58,26 @@ function Contact() {
   };
 
   const [copySuccess, setCopySuccess] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    if (/android|iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+      setIsMobile(true);
+    }
+  }, [])
 
   const copyToClipboard = () => {
     const email = "abcde@gmail.com";
     navigator.clipboard.writeText(email).then(() => {
-      setCopySuccess(true);
-      setTimeout(() => {
-        setCopySuccess(false);
-      }, 2000);
+      if (isMobile) {
+        alert("Copied to clipboard");
+      } else {
+        setCopySuccess(true);
+        setTimeout(() => {
+          setCopySuccess(false);
+        }, 2000);
+      }
     }).catch(err => {
       console.error("Failed to copy: ", err);
     });
@@ -87,7 +99,7 @@ function Contact() {
             </span>
           </div>
 
-          <div className="links">
+          <div className="link-box">
             <div className="link-type">
               <span>Contact</span>
               <span>E-mail</span>
@@ -99,7 +111,7 @@ function Contact() {
               </span>
               <div>
                 <span onClick={copyToClipboard} className="pointer">abcde@gmail.com</span>
-                {copySuccess && <span className="copy-success">copied to clipboard</span>}
+                {!isMobile && copySuccess && <span className="copy-success">copied to clipboard</span>}
               </div>
               <Link to='https://www.instagram.com/zohuisu/' target="_blank" className='pointer'><span>Instagram</span></Link>
             </div>

@@ -21,7 +21,7 @@
   justify-content: space-between;
 }
 
-.links {
+.link-box {
   display: flex;
 }
 
@@ -116,4 +116,42 @@ form button {
   font-size: xx-small;
   margin: 14vh 0 5px;
   color: #848482;
+}
+
+@media (max-width: 479px) {
+  .contact-container {
+    display: block;
+    padding-top: 22vh;
+    font-size: 14px;
+  }
+
+  .profile-img {
+    width: 50vw;
+    height: 38vh;
+    margin: 0 10vw;
+    object-fit: cover;
+  }
+  
+  .side {
+    width: 100%;
+    margin: 5vh 0 7vh;
+    height: 28vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .link-box {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  form div {
+    width: 70vw;
+    padding: 0.7em 0;
+  }
+
+  input, textarea {
+    font-size: 15px;
+  }
 }
