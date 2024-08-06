@@ -20,11 +20,11 @@ function Menu() {
 
       <div className={`menu-container ${menuOpen ? 'open' : ''}`}>
         <Logo onClick={closeMenu}></Logo>
-        <div class="close-button"  onClick={toggleMenu}>&#10005;</div>
+        <div class="close-button" onClick={toggleMenu}>&#10005;</div>
         <div>
           <Link to='/' onClick={closeMenu}><p>Home</p></Link>
           <Link to='/list' onClick={closeMenu}><p>All view</p></Link>
-          <p>Contact</p>
+          <Link to='/contact' onClick={closeMenu}><p>Contact</p></Link>
         </div>
       </div>
     </>

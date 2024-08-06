@@ -1,14 +1,6 @@
-.project-header {
-  position: relative;
-  height: 20vh;
+.buttons {
   width: 98vw;
   margin: 0 1vw 5px;
-  display: flex;
-  align-items: flex-end;
-}
-
-.buttons {
-  width: 100%;
   display: flex;
   justify-content: space-between;
 }
@@ -23,15 +15,7 @@
   color: #000;
 }
 
-.title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-transform: uppercase;
-}
-
-.list {
+nav {
   width: 100vw;
   position: fixed;
   top: 5px;
@@ -42,15 +26,15 @@
   transition: all 0.5s ease;
 }
 
-.list p {
+nav p {
   margin-right: 2vw;
   cursor: pointer;
 }
 
-.list p:hover {
+nav p:hover {
   color: #000;
 }
-.list p.active {
+nav p.active {
   color: #000;
 }
 
@@ -69,42 +53,37 @@
 }
 
 @media (max-width: 497px) {
-  .list {
+  .buttons {
+    width: 96vw;
+    margin: 0 2vw 10px;
+  }
+
+  nav {
     top: 10px;
   }
 
-  .list p {
+  nav p {
     margin-right: 1vw;
     width: 1.5rem;
     text-align: center;
   }
 
-  .list p:not(.active)::before {
+  nav p:not(.active)::before {
     content: '•';
     font-size: 1.5rem;
     line-height: 0.8rem;
     color: rgb(180, 180, 180);
   }
 
-  .list p:not(.active) {
+  nav p:not(.active) {
     color: transparent;
     margin-right: 1vw;
   }
 
-  .list p.active {
+  nav p.active {
     width: auto;
     color: #000;
     margin-right: 2vw;
-  }
-
-  .list-container {
-    width: 96vw;
-    margin: 0 2vw;
-  }
-
-  .project-header {
-    width: 96vw;
-    margin: 0 2vw 10px;
   }
 }
 
@@ -112,6 +91,11 @@
   .image-column {
     width: 30.6vw;
     gap: 2vw;
+  }
+
+  .list-container {
+    width: 96vw;
+    margin: 0 2vw;
   }
 }
 

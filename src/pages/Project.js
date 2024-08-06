@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import './List.css';
+import Header from '../component/Header';
 import CopyrightBottom from '../component/CopyrightBottom';
 
 const divideArrayIntoChunks = (array, chunkCount) => {
@@ -14,6 +15,10 @@ const divideArrayIntoChunks = (array, chunkCount) => {
 function Project() {
   const navigate = useNavigate();
 
+  const goBack = () => {
+    navigate(`/list?category=${encodeURIComponent(category)}`);
+  };
+
   const { title, category } = useParams();
 
   const categoryMap = {
@@ -24,10 +29,6 @@ function Project() {
 
   const [images, setImages] = useState([]);
   const [chunkCount, setChunkCount] = useState(4);
-
-  const goBack = () => {
-    navigate(`/list?category=${encodeURIComponent(category)}`);
-  };
 
   useEffect(() => {
     const updateChunkCount = () => {
@@ -78,12 +79,11 @@ function Project() {
 
   return (
     <>
-      <div className="project-header">
-        <h1 className='title'>{title}</h1>
-        <div className="buttons">
-          <p onClick={goBack}>&#10229; Back To List</p>
-          <p>View Grid</p>
-        </div>
+      <Header title={title}></Header>
+
+      <div className="buttons">
+        <p onClick={goBack}>&#10229; Back To List</p>
+        <p>View Grid</p>
       </div>
 
       <div className="list-container">

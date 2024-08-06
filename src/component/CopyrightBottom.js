@@ -14,7 +14,8 @@ function CopyrightBottom() {
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
-          textWrap: 'nowrap'
+          textWrap: 'nowrap',
+          fontSize: 'clamp(0.6rem, 0.8rem, 1rem)'
         }}>
         © 2024 Heesu Cho. All Rights Reserved
       </span>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './List.css';
+import Header from '../component/Header';
 import CopyrightBottom from '../component/CopyrightBottom';
 
 const projectData = [
@@ -64,18 +65,16 @@ function List() {
 
   return (
     <>
-      <div className="project-header">
-        <h1 className='title'>PROJECTS</h1>
-      </div>
+      <Header title={'projects'}></Header>
 
-      <div className="list">
+      <nav>
         <p className={selectedCategory === 'All' ? 'active' : ''} onClick={() => navigate('/list?category=All')}>All</p>
         <p className={selectedCategory === 'Beauty' ? 'active' : ''} onClick={() => navigate('/list?category=Beauty')}>Beauty</p>
         <p className={selectedCategory === 'Personal Work' ? 'active' : ''} onClick={() => navigate('/list?category=Personal Work')}>Personal Work</p>
         <p className={selectedCategory === 'Profile' ? 'active' : ''} onClick={() => navigate('/list?category=Profile')}>Profile</p>
         <p className={selectedCategory === 'Snap' ? 'active' : ''} onClick={() => navigate('/list?category=Snap')}>Snap</p>
         <p className={selectedCategory === 'Log' ? 'active' : ''} onClick={() => navigate('/list?category=Log')}>Log</p>
-      </div>
+      </nav>
 
       <div className="list-container">
         {chunkedImages.map((chunk, chunkIndex) => (

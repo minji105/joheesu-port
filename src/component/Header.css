@@ -1,0 +1,25 @@
+.project-header {
+  position: relative;
+  height: 22vh;
+  width: 98vw;
+  margin: 0 1vw 5px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.title {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  color: #fff;
+  mix-blend-mode: difference;
+}
+
+@media (max-width: 497px) {
+  .project-header {
+    width: 96vw;
+    margin: 0 2vw 10px;
+  }
+}

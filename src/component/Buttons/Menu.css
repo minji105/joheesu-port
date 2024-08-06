@@ -27,9 +27,9 @@
 
 .close-button {
   font-size: 20px;
+  padding: 1vh 1vw;
   position: fixed;
-  top: 2vh;
-  left: 2vw;
+  left: 1vw;
   cursor: pointer;
 }
 
@@ -40,7 +40,8 @@
   }
 
   .close-button {
-    left: 4vw;
+    left: 3vw;
+    top: 1vh;
   }
 }
 

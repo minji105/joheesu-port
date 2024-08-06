@@ -13,6 +13,15 @@ a {
   color: inherit;
 }
 
+.inline {
+  display: inline;
+}
+
+.pointer {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 h1 {
   margin: 0;
   font-size: 1.5rem;
@@ -28,11 +37,6 @@ p {
   font-weight: 700;
 }
 
-span {
-  font-size: 0.8rem;
-  font-weight: 400;
-}
-
 @media (max-width: 479px) {
   h1 {
     font-size: 1.3rem;
@@ -40,9 +44,5 @@ span {
 
   p {
     font-size: 0.8rem
-  }
-
-  span {
-    font-size: 0.6rem;
   }
 }
