@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import './MainPage.css';
 import ContactBtn from '../component/Copyright';
 import Logo from '../component/Buttons/Logo';
+import MouseFollower from '../component/MouseFollower';
 
 function MainPage() {
   const projectData = [
@@ -127,6 +128,7 @@ function MainPage() {
     <>
       <ContactBtn />
       <Logo />
+      <MouseFollower />
 
       <div className="main-container">
         <div>

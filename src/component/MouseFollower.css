@@ -1,0 +1,46 @@
+.mouse-follower {
+  opacity: 1;
+  pointer-events: none;
+  position: fixed;
+  z-index: 100000;
+  transform: translate3d(calc(var(--x) * 1px), calc(var(--y) * 1px), 0);
+  transform-origin: center;
+}
+
+.cursor__circle {
+  background: #848482;
+  border-radius: 100px;
+  height: .8rem;
+  width: .8rem;
+  position: relative;
+  will-change: transform, width;
+  z-index: 50;
+}
+
+.cursor__label {
+  right: 3.2rem;
+  top: -2.4rem;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  padding: 0.8rem 1.6rem;
+  transform-origin: right;
+  color: #fff;
+  /* background: #848482; */
+  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+  position: absolute;
+  border-radius: 10rem;
+  transform: scale(0);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.mouse-follower.hovering .cursor__circle {
+  transform: scale(1);
+  opacity: 0.7;
+}
+
+.mouse-follower.hovering .cursor__label {
+  transform: scale(1);
+  opacity: 1;
+}

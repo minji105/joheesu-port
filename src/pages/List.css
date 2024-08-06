@@ -5,6 +5,12 @@
   justify-content: space-between;
 }
 
+.arrow-icon {
+  width: 1rem;
+  height: 0.8rem;
+  transform: scaleX(-1);
+}
+
 .buttons p {
   cursor: pointer;
   color: rgb(180, 180, 180);
@@ -21,19 +27,17 @@ nav {
   top: 5px;
   display: flex;
   justify-content: flex-end;
-  color: rgb(180, 180, 180);
+  color: #c0c0c0;
   z-index: 100;
-  transition: all 0.5s ease;
 }
 
 nav p {
   margin-right: 2vw;
   cursor: pointer;
+  transition: color 0.5s ease;
 }
 
-nav p:hover {
-  color: #000;
-}
+nav p:hover,
 nav p.active {
   color: #000;
 }
@@ -58,6 +62,10 @@ nav p.active {
     margin: 0 2vw 10px;
   }
 
+  .arrow-icon {
+    height: 0.6rem;
+  }
+
   nav {
     top: 10px;
   }
@@ -72,7 +80,7 @@ nav p.active {
     content: '•';
     font-size: 1.5rem;
     line-height: 0.8rem;
-    color: rgb(180, 180, 180);
+    color: #e5e7ed;
   }
 
   nav p:not(.active) {
@@ -82,8 +90,8 @@ nav p.active {
 
   nav p.active {
     width: auto;
-    color: #000;
-    margin-right: 2vw;
+    color: #848482;
+    margin-right: 4vw;
   }
 }
 
@@ -127,4 +135,47 @@ nav p.active {
 
 .project-info:hover {
   opacity: 1;
+}
+
+
+
+.overlay {
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-image {
+  max-width: 80vh;
+  max-height: 80vh;
+}
+
+.close-button {
+  /* 이름 수정(메뉴 닫기 버튼이랑 겹침) */
+}
+
+.arrow {
+  background: none;
+  border: none;
+  font-size: 40px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #fff;
+}
+
+.left-arrow {
+  left: 20px;
+}
+
+.right-arrow {
+  right: 20px;
 }
