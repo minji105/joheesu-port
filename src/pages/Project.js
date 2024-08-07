@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 import './List.css';
@@ -80,18 +80,17 @@ function Project() {
 
   const chunkedImages = divideArrayIntoChunks(images, chunkCount);
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [slideIsOpen, setSlideIsOpen] = useState(false);
   const [currentImageIndex, setcurrentImageIndex] = useState(0);
 
-  const openModal = (index) => {
+  const openSlide = (index) => {
     setcurrentImageIndex(index);
-    setModalIsOpen(true);
-    
+    setSlideIsOpen(true);
   }
 
-  const closeModal = () => {
-    setModalIsOpen(false);
-  }
+  // const closeModal = () => {
+  //   setModalIsOpen(false);
+  // }
 
   const nextImage = () => {
     setcurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -100,6 +99,19 @@ function Project() {
   const prevImage = () => {
     setcurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   }
+
+
+  const [showGrid, setShowGrid] = useState(true);
+
+  const toggleGrid = () => {
+    setShowGrid((prevShowGrid) => !prevShowGrid);
+    setSlideIsOpen((prevSlideIsOpen) => !prevSlideIsOpen);
+  };
+
+  const handleOnClick = (chunkIndex, chunkCount, index) => {
+    toggleGrid(false);
+    openSlide(chunkIndex + chunkCount * index);
+  };
 
   return (
     <>
@@ -116,30 +128,45 @@ function Project() {
             className='arrow-icon'>
             <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
           </svg> Back To List</p>
-        <p>View Grid</p>
+        <p onClick={toggleGrid} className={showGrid ? 'active' : ''}>View Grid</p>
       </div>
 
-      <div className="list-container">
-        {chunkedImages.map((chunk, chunkIndex) => (
-          <div key={chunkIndex} className="image-column">
-            {chunk.map((image, index) => (
-              <img
-                key={index}
-                src={image.img}
-                alt={image.title}
-                onClick={() => openModal(chunkIndex + chunkCount * index)}
-              />
-            ))}
-          </div>
-        ))}
-      </div>
+      {(showGrid && !slideIsOpen) && (
+        <div className="grid-container">
+          {chunkedImages.map((chunk, chunkIndex) => (
+            <div key={chunkIndex} className="image-column">
+              {chunk.map((image, index) => (
+                <div className="img-container">
+                  <img
+                    key={index}
+                    src={image.img}
+                    alt={image.title}
+                    onClick={() => handleOnClick(chunkIndex, chunkCount, index)}
+                    className='grid-img'
+                  />
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
 
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel='Image Viewer' className="modal" overlayClassName="overlay">
+      {(!showGrid && slideIsOpen) && (
+        <div className="slide-container">
+          <button onClick={prevImage} className="arrow left-arrow">&lt;</button>
+          <img src={images[currentImageIndex]?.img} alt={`image ${currentImageIndex + 1}`} />
+          <button onClick={nextImage} className="arrow right-arrow">&gt;</button>
+          <p>{currentImageIndex + 1} / {images.length}</p>
+        </div>
+      )}
+
+      {/* <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel='Image Viewer' className="modal" overlayClassName="overlay">
         <button onClick={closeModal} className='close-button'>&times;</button>
         <button onClick={prevImage} className="arrow left-arrow">&lt;</button>
         <img className='modal-image' src={images[currentImageIndex]?.img} alt={`Image ${currentImageIndex + 1}`} />
         <button onClick={nextImage} className="arrow right-arrow">&gt;</button>
-      </Modal>
+        <p>{currentImageIndex + 1} / {images.length}</p>
+      </Modal> */}
 
       <CopyrightBottom></CopyrightBottom>
     </>

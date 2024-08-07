@@ -88,7 +88,7 @@ function Contact() {
       <Header title={'contact'}></Header>
 
       <div className="contact-container">
-        <img className='profile-img' src={`${process.env.PUBLIC_URL}/imgs/profile/3/3-1.jpg`} alt="" />
+        <img className='profile-img' src={`${process.env.PUBLIC_URL}/imgs/contact_profile.jpg`} alt="" />
 
         <div className='side'>
           <div className="info">

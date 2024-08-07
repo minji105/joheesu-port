@@ -76,7 +76,7 @@ function List() {
         <p className={selectedCategory === 'Log' ? 'active' : ''} onClick={() => navigate('/list?category=Log')}>Log</p>
       </nav>
 
-      <div className="list-container">
+      <div className="grid-container">
         {chunkedImages.map((chunk, chunkIndex) => (
           <div key={chunkIndex} className="image-column">
             {chunk.map((image, index) => (
@@ -84,6 +84,9 @@ function List() {
                 <img
                   src={image.img}
                   alt={image.title}
+                  style={{
+                    height: '100%'
+                  }}
                 />
                 <div className="project-info">
                   <span>{image.title}</span>

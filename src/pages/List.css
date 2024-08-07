@@ -1,4 +1,7 @@
 .buttons {
+  position: absolute;
+  top: 21.5vh;
+  transform: translateY(-100%);
   width: 98vw;
   margin: 0 1vw 5px;
   display: flex;
@@ -13,11 +16,12 @@
 
 .buttons p {
   cursor: pointer;
-  color: rgb(180, 180, 180);
+  color: #c0c0c0;
   transition: color 0.3s ease;
 }
 
-.buttons p:hover {
+.buttons p:hover,
+.buttons p.active {
   color: #000;
 }
 
@@ -42,7 +46,7 @@ nav p.active {
   color: #000;
 }
 
-.list-container {
+.grid-container {
   width: 98vw;
   margin: 0 1vw;
   display: flex;
@@ -55,6 +59,36 @@ nav p.active {
   flex-direction: column;
   gap: 1.5vw;
 }
+
+.grid-img {
+  transition: transform 0.3s ease;
+}
+.img-container:hover .grid-img {
+  transform: scale(1.05);
+}
+
+.slide-container {
+  position: relative;
+  width: 98vw;
+  height: 78vh;
+  margin: 0 1vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide-container img {
+  max-height: 100%;
+}
+
+.slide-container p {
+  position: absolute;
+  bottom: 5px;
+  right: 0;
+}
+
 
 @media (max-width: 497px) {
   .buttons {
@@ -101,19 +135,21 @@ nav p.active {
     gap: 2vw;
   }
 
-  .list-container {
+  .grid-container {
     width: 96vw;
     margin: 0 2vw;
   }
 }
 
-.list-container img {
+.grid-container img {
   width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
 .img-container {
   position: relative;
+  overflow: hidden;
 }
 
 .project-info {
@@ -138,29 +174,6 @@ nav p.active {
 }
 
 
-
-.overlay {
-  position: fixed;
-  z-index: 10000;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal-image {
-  max-width: 80vh;
-  max-height: 80vh;
-}
-
-.close-button {
-  /* 이름 수정(메뉴 닫기 버튼이랑 겹침) */
-}
-
 .arrow {
   background: none;
   border: none;
@@ -169,13 +182,19 @@ nav p.active {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  color: #fff;
+  color: #c0c0c0;
+  transition: color 0.3s ease;
 }
 
 .left-arrow {
-  left: 20px;
+  left: 0;
 }
 
 .right-arrow {
-  right: 20px;
+  right: 0;
+}
+
+.left-arrow:hover,
+.right-arrow:hover {
+  color: #000;
 }
