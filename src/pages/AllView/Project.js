@@ -2,9 +2,9 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
 import Modal from 'react-modal';
-import './List.css';
-import Header from '../component/Header';
-import CopyrightBottom from '../component/CopyrightBottom';
+import './List&Project.css';
+import Header from '../../component/Layout/ProjectHeader';
+import CopyrightBottom from '../../component/Layout/CopyrightBottom';
 
 Modal.setAppElement('#root');
 

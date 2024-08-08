@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 function CopyrightBottom() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 479);
 
   const handleResize = () => {
     setIsMobile(window.innerWidth <= 479);
@@ -27,7 +27,7 @@ function CopyrightBottom() {
       style={{
         position: 'relative',
         height: '15vh',
-        width: '100vw',
+        width: '100vw'
       }}>
       <span
         style={{

@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import './MainPage.css';
-import ContactBtn from '../component/Copyright';
-import Logo from '../component/Buttons/Logo';
-import MouseFollower from '../component/MouseFollower';
+import Logo from '../../component/Buttons/Logo';
+import MouseFollower from '../../component/Layout/MouseFollower';
 
 function MainPage() {
   const projectData = [
@@ -126,9 +125,10 @@ function MainPage() {
 
   return (
     <>
-      <ContactBtn />
       <Logo />
       <MouseFollower />
+
+      <p className='copyright'>@ 2024</p>
 
       <div className="main-container">
         <div>

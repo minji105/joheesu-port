@@ -1,3 +1,12 @@
+.copyright {
+  position: fixed;
+  top: 5px;
+  right: 1vw;
+  z-index: 1000;
+  mix-blend-mode: difference;
+  color: #fff;
+}
+
 .main-container {
   width: 98vw;
   z-index: 1000;
@@ -15,6 +24,11 @@
 }
 
 @media (max-width: 479px) {
+  .copyright {
+    top: 10px;
+    right: 2vw;
+  }
+  
   .main-container {
     align-items: flex-end;
     width: 96vw;

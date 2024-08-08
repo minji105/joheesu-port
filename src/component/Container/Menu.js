@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Menu.css';
-import Logo from './Logo';
+import Logo from '../Buttons/Logo';
+import CloseButton from '../Buttons/CloseButton';
 
 function Menu() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,7 +21,7 @@ function Menu() {
 
       <div className={`menu-container ${menuOpen ? 'open' : ''}`}>
         <Logo onClick={closeMenu}></Logo>
-        <div class="close-button" onClick={toggleMenu}>&#10005;</div>
+        <CloseButton onClick={toggleMenu} style={{ left: '0' }} />
         <div>
           <Link to='/' onClick={closeMenu}><p>Home</p></Link>
           <Link to='/list' onClick={closeMenu}><p>All view</p></Link>

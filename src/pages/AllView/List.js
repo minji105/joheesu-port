@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import './List.css';
-import Header from '../component/Header';
-import CopyrightBottom from '../component/CopyrightBottom';
+import './List&Project.css';
+import Header from '../../component/Layout/ProjectHeader';
+import CopyrightBottom from '../../component/Layout/CopyrightBottom';
+import Category from '../../component/Container/Category';
 
 const projectData = [
   { img: `${process.env.PUBLIC_URL}/imgs/personalWork/1/1-1.jpg`, title: "1", category: "Personal Work", date: "2022" },
@@ -67,14 +68,7 @@ function List() {
     <>
       <Header title={'projects'}></Header>
 
-      <nav>
-        <p className={selectedCategory === 'All' ? 'active' : ''} onClick={() => navigate('/list?category=All')}>All</p>
-        <p className={selectedCategory === 'Beauty' ? 'active' : ''} onClick={() => navigate('/list?category=Beauty')}>Beauty</p>
-        <p className={selectedCategory === 'Personal Work' ? 'active' : ''} onClick={() => navigate('/list?category=Personal Work')}>Personal Work</p>
-        <p className={selectedCategory === 'Profile' ? 'active' : ''} onClick={() => navigate('/list?category=Profile')}>Profile</p>
-        <p className={selectedCategory === 'Snap' ? 'active' : ''} onClick={() => navigate('/list?category=Snap')}>Snap</p>
-        <p className={selectedCategory === 'Log' ? 'active' : ''} onClick={() => navigate('/list?category=Log')}>Log</p>
-      </nav>
+      <Category selectedCategory={selectedCategory}></Category>
 
       <div className="grid-container">
         {chunkedImages.map((chunk, chunkIndex) => (

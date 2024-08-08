@@ -1,12 +1,12 @@
 import React from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Menu from './component/Buttons/Menu';
+import Menu from './component/Container/Menu';
 import ScrollTop from './component/Buttons/ScrollTop';
-import MainPage from './pages/MainPage';
-import List from './pages/List';
-import Project from './pages/Project';
-import Contact from './pages/Contact';
+import MainPage from './pages/Main/MainPage';
+import List from './pages/AllView/List';
+import Project from './pages/AllView/Project';
+import Contact from './pages/Contact/Contact';
 
 function App() {
   return (

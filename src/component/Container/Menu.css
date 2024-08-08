@@ -25,23 +25,10 @@
   opacity: 1;
 }
 
-.close-button {
-  font-size: 20px;
-  padding: 1vh 1vw;
-  position: fixed;
-  left: 1vw;
-  cursor: pointer;
-}
-
 @media (max-width: 479px) {
   .menu-button {
     left: 2vw;
     top: 10px;
-  }
-
-  .close-button {
-    left: 3vw;
-    top: 1vh;
   }
 }
 
