@@ -115,7 +115,7 @@ function Project() {
     onSwipedLeft: nextImage,
     onSwipedRight: prevImage,
     preventDefaultTouchmoveEvent: true,
-    trackMouse: true, // Optionally, you can also track mouse swipes
+    trackMouse: true,
   });
 
   return (

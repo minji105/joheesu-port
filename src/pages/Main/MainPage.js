@@ -117,8 +117,6 @@ function MainPage() {
     };
   }, []);
 
-
-
   const handleSectionClick = (category, title) => {
     navigate(`/list/${encodeURIComponent(category)}/${encodeURIComponent(title)}`);
   };
