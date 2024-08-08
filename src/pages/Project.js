@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useSwipeable } from 'react-swipeable';
 import Modal from 'react-modal';
 import './List.css';
 import Header from '../component/Header';
@@ -88,10 +89,6 @@ function Project() {
     setSlideIsOpen(true);
   }
 
-  // const closeModal = () => {
-  //   setModalIsOpen(false);
-  // }
-
   const nextImage = () => {
     setcurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
   }
@@ -112,6 +109,14 @@ function Project() {
     toggleGrid(false);
     openSlide(chunkIndex + chunkCount * index);
   };
+
+
+  const handlers = useSwipeable({
+    onSwipedLeft: nextImage,
+    onSwipedRight: prevImage,
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true, // Optionally, you can also track mouse swipes
+  });
 
   return (
     <>
@@ -152,21 +157,13 @@ function Project() {
       )}
 
       {(!showGrid && slideIsOpen) && (
-        <div className="slide-container">
+        <div className="slide-container" {...handlers}>
           <button onClick={prevImage} className="arrow left-arrow">&lt;</button>
           <img src={images[currentImageIndex]?.img} alt={`image ${currentImageIndex + 1}`} />
           <button onClick={nextImage} className="arrow right-arrow">&gt;</button>
-          <p>{currentImageIndex + 1} / {images.length}</p>
+          <div className="slide-index"><p>{currentImageIndex + 1} / {images.length}</p></div>
         </div>
       )}
-
-      {/* <Modal isOpen={modalIsOpen} onRequestClose={closeModal} contentLabel='Image Viewer' className="modal" overlayClassName="overlay">
-        <button onClick={closeModal} className='close-button'>&times;</button>
-        <button onClick={prevImage} className="arrow left-arrow">&lt;</button>
-        <img className='modal-image' src={images[currentImageIndex]?.img} alt={`Image ${currentImageIndex + 1}`} />
-        <button onClick={nextImage} className="arrow right-arrow">&gt;</button>
-        <p>{currentImageIndex + 1} / {images.length}</p>
-      </Modal> */}
 
       <CopyrightBottom></CopyrightBottom>
     </>
