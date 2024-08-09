@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
 import Modal from 'react-modal';
 import './List&Project.css';
+import imageCountData from '../../imageCount.json';
 import Header from '../../component/Layout/ProjectHeader';
 import CopyrightBottom from '../../component/Layout/CopyrightBottom';
 
@@ -26,6 +27,7 @@ function Project() {
   const { title, category } = useParams();
 
   const categoryMap = {
+    "Beauty": "beauty",
     "Personal Work": "personalWork",
     "Profile": "profile",
     "Snap": "snap"
@@ -52,8 +54,9 @@ function Project() {
   }, []);
 
   useEffect(() => {
+    const imagesCount = imageCountData[categoryMap[category]][title]
     const imagePaths = Array.from(
-      { length: 20 },
+      { length: imagesCount },
       (_, index) => `${process.env.PUBLIC_URL}/imgs/${categoryMap[category]}/${title}/${title}-${index + 1}.jpg`
     );
 
@@ -148,7 +151,6 @@ function Project() {
                     alt={image.title}
                     onClick={() => handleOnClick(chunkIndex, chunkCount, index)}
                     className='grid-img'
-                    loading="lazy"
                   />
                 </div>
               ))}

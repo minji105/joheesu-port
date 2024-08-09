@@ -11,6 +11,7 @@
   width: 98vw;
   z-index: 1000;
   color: #fff;
+  mix-blend-mode: difference;
   position: fixed;
   bottom: 5px;
   left: 1vw;

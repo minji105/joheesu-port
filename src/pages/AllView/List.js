@@ -6,6 +6,9 @@ import CopyrightBottom from '../../component/Layout/CopyrightBottom';
 import Category from '../../component/Container/Category';
 
 const projectData = [
+  { img: `${process.env.PUBLIC_URL}/imgs/beauty/&byromand/&byromand-1.jpg`, title: "&byromand", category: "Beauty", date: "2023.12" },
+  { img: `${process.env.PUBLIC_URL}/imgs/beauty/rom&nd_1/rom&nd_1-1.jpg`, title: "rom&nd_1", category: "Beauty", date: "2024.03" },
+  { img: `${process.env.PUBLIC_URL}/imgs/beauty/rom&nd_2/rom&nd_2-1.jpg`, title: "rom&nd_2", category: "Beauty", date: "2024.05" },
   { img: `${process.env.PUBLIC_URL}/imgs/personalWork/1/1-1.jpg`, title: "1", category: "Personal Work", date: "2022" },
   { img: `${process.env.PUBLIC_URL}/imgs/personalWork/2/2-1.jpg`, title: "2", category: "Personal Work", date: "2022" },
   { img: `${process.env.PUBLIC_URL}/imgs/personalWork/3/3-1.jpg`, title: "3", category: "Personal Work", date: "2022" },
@@ -81,11 +84,12 @@ function List() {
                   style={{
                     height: '100%'
                   }}
-                  loading="lazy"
                 />
                 <div className="project-info">
                   <span>{image.title}</span>
-                  <span style={{ fontSize: '12px' }}>{image.date}</span>
+                  <span style={{ 
+                    fontSize: '12px',
+                    marginTop: '7px' }}>{image.date}</span>
                 </div>
               </Link>
             ))}
