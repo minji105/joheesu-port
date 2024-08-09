@@ -81,6 +81,7 @@ function List() {
                   style={{
                     height: '100%'
                   }}
+                  loading="lazy"
                 />
                 <div className="project-info">
                   <span>{image.title}</span>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import './MainPage.css';
-import Logo from '../../component/Buttons/Logo';
+import Logo from '../../component/Layout/Logo';
 import MouseFollower from '../../component/Layout/MouseFollower';
 
 function MainPage() {

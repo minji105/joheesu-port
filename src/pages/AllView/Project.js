@@ -53,7 +53,7 @@ function Project() {
 
   useEffect(() => {
     const imagePaths = Array.from(
-      { length: 100 },
+      { length: 20 },
       (_, index) => `${process.env.PUBLIC_URL}/imgs/${categoryMap[category]}/${title}/${title}-${index + 1}.jpg`
     );
 
@@ -148,6 +148,7 @@ function Project() {
                     alt={image.title}
                     onClick={() => handleOnClick(chunkIndex, chunkCount, index)}
                     className='grid-img'
+                    loading="lazy"
                   />
                 </div>
               ))}

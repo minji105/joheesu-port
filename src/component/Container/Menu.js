@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Menu.css';
-import Logo from '../Buttons/Logo';
+import Logo from '../Layout/Logo';
 import CloseButton from '../Buttons/CloseButton';
 
 function Menu() {

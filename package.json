@@ -22,7 +22,7 @@
     "eject": "react-scripts eject",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://minji105.github.io/Photography-portfolio-web-finall-/",
+  "homepage": "https://hsphotography.site",
   "eslintConfig": {
     "extends": [
       "react-app",
