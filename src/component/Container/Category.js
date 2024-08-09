@@ -27,7 +27,9 @@ function Category({ selectedCategory }) {
 
   return (
     <>
-      <p className="category-button" onClick={toggleCategory}>Category</p>
+      <p className="category-button" onClick={toggleCategory}>
+        {selectedCategory === 'All' ? 'Category' : selectedCategory}
+      </p>
 
       <div className={`category-container ${categoryOpen ? 'open' : ''}`}>
         <CloseButton onClick={toggleCategory} style={{ right: '0' }} />

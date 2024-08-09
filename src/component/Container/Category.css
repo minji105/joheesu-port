@@ -24,7 +24,7 @@ nav p.active {
   top: 10px;
   right: 2vw;
   mix-blend-mode: difference;
-  color: #fff;
+  color: #6b6b6b;
   display: none;
   z-index: 1000;
 }
