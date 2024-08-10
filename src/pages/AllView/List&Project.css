@@ -48,6 +48,7 @@
 }
 
 .slide-container {
+  position: relative;
   width: 98vw;
   height: 78vh;
   margin: 0 1vw;
@@ -62,12 +63,10 @@
 }
 
 .slide-index {
-  width: 98vw;
-  margin: 0 1vw;
+  margin: 5px 1vw;
   position: absolute;
-  bottom: 5px;
-  left: 0;
-  text-align: end;
+  bottom: 0;
+  right: 0;
 }
 
 .grid-container img {
@@ -147,10 +146,10 @@
   }
 
   .slide-index {
-    width: 96vw;
-    margin: 0 2vw;
-    text-align: center;
+    width: 100vw;
+    margin: 0;
     bottom: 10px;
+    text-align: center;
   }
 
   .arrow {

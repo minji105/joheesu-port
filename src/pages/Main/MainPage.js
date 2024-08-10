@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import './MainPage.css';
 import Logo from '../../component/Layout/Logo';
 import MouseFollower from '../../component/Layout/MouseFollower';
+import SlideAlert from '../../component/Alert/SlideAlert';
 
 function MainPage() {
   const projectData = [
@@ -86,7 +87,7 @@ function MainPage() {
         gotoSection(currentIndex + 1, 1);
       }
     });
-    
+
     let touchStartY = 0;
     let touchEndY = 0;
 
@@ -128,6 +129,8 @@ function MainPage() {
       <Logo />
       <MouseFollower />
 
+      <SlideAlert direction="vertical"/>
+
       <p className='copyright'>@ 2024</p>
 
       <div className="main-container">
@@ -138,7 +141,7 @@ function MainPage() {
         </div>
         <p>scroll</p>
       </div>
-      
+
       {projectData.map((project, index) => (
         <Section
           key={project.id}

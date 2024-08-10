@@ -21,8 +21,9 @@ nav p.active {
 
 .category-button {
   position: fixed;
-  top: 10px;
-  right: 2vw;
+  top: 0;
+  right: 0;
+  padding: 10px 2vw;
   mix-blend-mode: difference;
   color: #6b6b6b;
   display: none;

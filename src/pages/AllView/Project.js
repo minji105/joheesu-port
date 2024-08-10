@@ -5,6 +5,7 @@ import Modal from 'react-modal';
 import './List&Project.css';
 import imageCountData from '../../imageCount.json';
 import Header from '../../component/Layout/ProjectHeader';
+import SlideAlert from '../../component/Alert/SlideAlert';
 import CopyrightBottom from '../../component/Layout/CopyrightBottom';
 
 Modal.setAppElement('#root');
@@ -160,12 +161,15 @@ function Project() {
       )}
 
       {(!showGrid && slideIsOpen) && (
-        <div className="slide-container" {...handlers}>
-          <button onClick={prevImage} className="arrow left-arrow">&lt;</button>
-          <img src={images[currentImageIndex]?.img} alt={`image ${currentImageIndex + 1}`} />
-          <button onClick={nextImage} className="arrow right-arrow">&gt;</button>
+        <>
+          <div className="slide-container" {...handlers}>
+            <SlideAlert direction="horizontal" />
+            <button onClick={prevImage} className="arrow left-arrow">&lt;</button>
+            <img src={images[currentImageIndex]?.img} alt={`image ${currentImageIndex + 1}`} />
+            <button onClick={nextImage} className="arrow right-arrow">&gt;</button>
+          </div>
           <div className="slide-index"><p>{currentImageIndex + 1} / {images.length}</p></div>
-        </div>
+        </>
       )}
 
       <CopyrightBottom></CopyrightBottom>

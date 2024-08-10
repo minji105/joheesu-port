@@ -69,7 +69,7 @@ function List() {
 
   return (
     <>
-      <Header title={'projects'}></Header>
+      <Header title={'PROJECTS'}></Header>
 
       <Category selectedCategory={selectedCategory}></Category>
 
@@ -82,7 +82,8 @@ function List() {
                   src={image.img}
                   alt={image.title}
                   style={{
-                    height: '100%'
+                    height: '100%',
+                    cursor: 'pointer'
                   }}
                 />
                 <div className="project-info">

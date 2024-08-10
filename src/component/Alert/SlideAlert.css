@@ -1,0 +1,30 @@
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.slide-alert {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  padding: 1em;
+  border-radius: 5px;
+  z-index: 1000;
+  text-align: center;
+  opacity: 0;
+  animation: fadeInOut 2s ease-in-out forwards;
+  animation-delay: 0.5s;
+}
