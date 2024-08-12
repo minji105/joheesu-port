@@ -3,20 +3,11 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
 import Modal from 'react-modal';
 import './List&Project.css';
-import imageCountData from '../../imageCount.json';
+import imageCountData from '../../data/imageCount.json';
+import divideArrayIntoChunks, { useChunkCount } from '../../hooks/divideArrayIntoChunks';
 import Header from '../../component/Layout/ProjectHeader';
 import SlideAlert from '../../component/Alert/SlideAlert';
 import CopyrightBottom from '../../component/Layout/CopyrightBottom';
-
-Modal.setAppElement('#root');
-
-const divideArrayIntoChunks = (array, chunkCount) => {
-  const chunks = Array.from({ length: chunkCount }, () => []);
-  array.forEach((item, index) => {
-    chunks[index % chunkCount].push(item);
-  });
-  return chunks;
-};
 
 function Project() {
   const navigate = useNavigate();
@@ -35,24 +26,6 @@ function Project() {
   };
 
   const [images, setImages] = useState([]);
-  const [chunkCount, setChunkCount] = useState(4);
-
-  useEffect(() => {
-    const updateChunkCount = () => {
-      if (window.innerWidth <= 768) {
-        setChunkCount(3);
-      } else {
-        setChunkCount(4);
-      }
-    };
-
-    window.addEventListener('resize', updateChunkCount);
-    updateChunkCount();
-
-    return () => {
-      window.removeEventListener('resize', updateChunkCount);
-    };
-  }, []);
 
   useEffect(() => {
     const imagesCount = imageCountData[categoryMap[category]][title]
@@ -82,8 +55,6 @@ function Project() {
       };
     });
   }, [title]);
-
-  const chunkedImages = divideArrayIntoChunks(images, chunkCount);
 
   const [slideIsOpen, setSlideIsOpen] = useState(false);
   const [currentImageIndex, setcurrentImageIndex] = useState(0);
@@ -122,6 +93,9 @@ function Project() {
     trackMouse: true,
   });
 
+  const chunkCount = useChunkCount();
+  const chunkedImages = divideArrayIntoChunks(images, chunkCount);
+
   return (
     <>
       <Header title={title}></Header>
@@ -130,12 +104,11 @@ function Project() {
         <p onClick={goBack}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            stroke-width="4"
-            className='arrow-icon'>
-            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            strokeWidth="4"
+            className='h-6 w-6 arrow-icon'>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
           </svg> Back To List</p>
         <p onClick={toggleGrid} className={showGrid ? 'active' : ''}>View Grid</p>
       </div>
@@ -143,9 +116,9 @@ function Project() {
       {(showGrid && !slideIsOpen) && (
         <div className="grid-container">
           {chunkedImages.map((chunk, chunkIndex) => (
-            <div key={chunkIndex} className="image-column">
+            <div key={`column-${chunkIndex}`} className="image-column">
               {chunk.map((image, index) => (
-                <div className="img-container">
+                <div key={`image-${chunkIndex}-${index}`} className="img-container">
                   <img
                     key={index}
                     src={image.img}
@@ -163,7 +136,7 @@ function Project() {
       {(!showGrid && slideIsOpen) && (
         <>
           <div className="slide-container" {...handlers}>
-            <SlideAlert direction="horizontal" />
+            <SlideAlert direction="horizontal" storageKey="projectPageAlertShown"/>
             <button onClick={prevImage} className="arrow left-arrow">&lt;</button>
             <img src={images[currentImageIndex]?.img} alt={`image ${currentImageIndex + 1}`} />
             <button onClick={nextImage} className="arrow right-arrow">&gt;</button>

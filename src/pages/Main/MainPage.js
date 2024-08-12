@@ -2,34 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import './MainPage.css';
+import MainPageImagea from '../../data/MainPageImages';
 import Logo from '../../component/Layout/Logo';
 import MouseFollower from '../../component/Layout/MouseFollower';
 import SlideAlert from '../../component/Alert/SlideAlert';
 
 function MainPage() {
-  const projectData = [
-    { id: "001", title: "rom&nd_1", category: "Beauty", bgurl: `${process.env.PUBLIC_URL}/imgs/beauty/rom&nd_1/rom&nd_1-8.jpg` },
-    { id: "002", title: "9", category: "Personal Work", bgurl: `${process.env.PUBLIC_URL}/imgs/personalWork/9/9-5.jpg` },
-    { id: "003", title: "3", category: "Snap", bgurl: `${process.env.PUBLIC_URL}/imgs/snap/3/3-10.jpg` },
-    { id: "004", title: "9", category: "Personal Work", bgurl: `${process.env.PUBLIC_URL}/imgs/personalWork/9/9-2.jpg` },
-    { id: "005", title: "1", category: "Snap", bgurl: `${process.env.PUBLIC_URL}/imgs/snap/1/1-1.jpg` },
-    { id: "006", title: "3", category: "Snap", bgurl: `${process.env.PUBLIC_URL}/imgs/snap/3/3-11.jpg` },
-    { id: "007", title: "8", category: "Personal Work", bgurl: `${process.env.PUBLIC_URL}/imgs/personalWork/8/8-1.jpg` },
-    { id: "008", title: "2", category: "Snap", bgurl: `${process.env.PUBLIC_URL}/imgs/snap/2/2-9.jpg` },
-    { id: "009", title: "rom&nd_2", category: "Beauty", bgurl: `${process.env.PUBLIC_URL}/imgs/beauty/rom&nd_2/rom&nd_2-6.jpg` },
-    { id: "010", title: "1", category: "Snap", bgurl: `${process.env.PUBLIC_URL}/imgs/snap/1/1-3.jpg` },
-    { id: "011", title: "2", category: "Personal Work", bgurl: `${process.env.PUBLIC_URL}/imgs/personalWork/2/2-5.jpg` },
-    { id: "012", title: "1", category: "Snap", bgurl: `${process.env.PUBLIC_URL}/imgs/snap/1/1-16.jpg` },
-    { id: "013", title: "5", category: "Personal Work", bgurl: `${process.env.PUBLIC_URL}/imgs/personalWork/5/5-2.jpg` }
-  ];
-
   const [currentProject, setCurrentProject] = useState({ id: '', title: '', category: '' });
   const navigate = useNavigate();
 
   useEffect(() => {
     let sections = document.querySelectorAll(".section"),
       images = document.querySelectorAll(".background"),
-      headings = document.querySelectorAll(".section-title"),
       outerWrappers = document.querySelectorAll(".wrapper-outer"),
       innerWrappers = document.querySelectorAll(".wrapper-inner"),
       currentIndex = -1,
@@ -56,17 +40,10 @@ function MainPage() {
       gsap.set(sections[index], { autoAlpha: 1, zIndex: 1 });
       tl.fromTo([outerWrappers[index], innerWrappers[index]], { yPercent: (i) => (i ? -100 * dFactor : 100 * dFactor) }, { yPercent: 0 }, 0)
         .fromTo(images[index], { yPercent: 15 * dFactor }, { yPercent: 0 }, 0)
-        .fromTo(headings[index], { autoAlpha: 0, yPercent: 150 * dFactor }, {
-          autoAlpha: 1,
-          yPercent: 0,
-          duration: 1,
-          ease: "power2",
-          stagger: { each: 0.02, from: "random" },
-        }, 0.2);
 
       currentIndex = index;
 
-      setCurrentProject(projectData[index]);
+      setCurrentProject(MainPageImagea[index]);
     }
 
     let lastTap = 0;
@@ -129,20 +106,20 @@ function MainPage() {
       <Logo />
       <MouseFollower />
 
-      <SlideAlert direction="vertical"/>
+      <SlideAlert direction="vertical" storageKey="mainPageAlertShown"/>
 
       <p className='copyright'>@ 2024</p>
 
       <div className="main-container">
         <div>
-          <p>{currentProject.id} &mdash; 011</p>
+          <p>{currentProject.id} &mdash; 013</p>
           <p>{currentProject.title}</p>
           <p>{currentProject.category}</p>
         </div>
         <p>scroll</p>
       </div>
 
-      {projectData.map((project, index) => (
+      {MainPageImagea.map((project, index) => (
         <Section
           key={project.id}
           id={project.id}
@@ -156,15 +133,13 @@ function MainPage() {
   );
 }
 
-const Section = ({ id, title, className, bgUrl, onClick }) => {
+const Section = ({ id, className, bgUrl, onClick }) => {
   return (
     <section id={id} className={`section ${className}`} onClick={onClick}>
       <div className="wrapper-outer">
         <div className="wrapper-inner">
           <Link to={`/list`}>
-            <div className="background mouse-hover" style={{ backgroundImage: `url(${bgUrl})` }}>
-              {/* <span className="section-title">{id}</span> */}
-            </div>
+            <div className="background mouse-hover" style={{ backgroundImage: `url(${bgUrl})` }} />
           </Link>
         </div>
       </div>

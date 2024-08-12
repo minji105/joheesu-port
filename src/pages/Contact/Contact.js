@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Contact.css';
 import Header from '../../component/Layout/ProjectHeader';
+import useMobileDetection from '../../hooks/useMobileDetection';
 
 function Contact() {
+  const isMobile = useMobileDetection();
+  
   useEffect(() => {
     const body = document.querySelector('body');
     const header = document.querySelector('.project-header');
@@ -26,11 +29,7 @@ function Contact() {
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -58,14 +57,6 @@ function Contact() {
   };
 
   const [copySuccess, setCopySuccess] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    if (/android|iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-      setIsMobile(true);
-    }
-  }, [])
 
   const copyToClipboard = () => {
     const email = "abcde@gmail.com";
