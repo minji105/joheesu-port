@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import './Contact.css';
 import Header from '../../component/Layout/ProjectHeader';
 import useMobileDetection from '../../hooks/useMobileDetection';
 
 function Contact() {
   const isMobile = useMobileDetection();
-  
+
   useEffect(() => {
     const body = document.querySelector('body');
     const header = document.querySelector('.project-header');
@@ -22,35 +21,6 @@ function Contact() {
       header.style.backgroundColor = '';
     }
   })
-
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [statusMessage, setStatusMessage] = useState('');
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    axios.post('https://hsphotography.site/send', formData)
-      .then((response) => {
-        setStatusMessage('Message sent successfully!');
-      })
-      .catch((error) => {
-        setStatusMessage('Failed to send message.');
-        console.error('There was an error!', error);
-      });
-  };
-
-  const scrollToForm = () => {
-    const formSection = document.querySelector('form');
-    formSection.scrollIntoView({ behavior: 'smooth' });
-  };
 
   const [copySuccess, setCopySuccess] = useState(false);
 
@@ -88,16 +58,12 @@ function Contact() {
 
           <div className="link-box">
             <div className="link-type">
-              <span>Contact</span>
               <span>E-mail</span>
               <span>SNS</span>
             </div>
             <div className="link">
-              <span>
-                <div onClick={scrollToForm} className="pointer inline">Form</div> or E-mail
-              </span>
               <div>
-                <span onClick={copyToClipboard} className="pointer">abcde@gmail.com</span>
+                <span onClick={copyToClipboard} className="pointer">hee@gmail.com</span>
                 {!isMobile && copySuccess && <span className="copy-success">copied to clipboard</span>}
               </div>
               <Link to='https://www.instagram.com/zohuisu/' target="_blank" className='pointer'><span>Instagram</span></Link>
@@ -106,43 +72,7 @@ function Contact() {
         </div>
       </div >
 
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label></label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder='Name *'
-            required
-          />
-        </div>
-        <div>
-          <label></label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder='E-mail *'
-            required
-          />
-        </div>
-        <div className='message'>
-          <label></label>
-          <textarea
-            name="message" className='textarea'
-            value={formData.message}
-            onChange={handleChange}
-            placeholder='Message *'
-            required
-          />
-        </div>
-        <button type="submit" className='send-button'>Send</button>
-
-        <p className='site-by'>Site by Cho Minji</p>
-      </form>
+      <p className='site-by'>Site by Cho Minji</p>
     </>
   );
 }
