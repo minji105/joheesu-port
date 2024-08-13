@@ -37,7 +37,7 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    axios.post('http://localhost:5000/send', formData)
+    axios.post('https://hsphotography.site//send', formData)
       .then((response) => {
         setStatusMessage('Message sent successfully!');
       })
