@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import './Contact.css';
 import Header from '../../component/Layout/ProjectHeader';
 import useMobileDetection from '../../hooks/useMobileDetection';
@@ -27,6 +28,7 @@ function Contact() {
     email: '',
     message: ''
   });
+  const [statusMessage, setStatusMessage] = useState('');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -35,20 +37,14 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('http://localhost:3000/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
-
-    if (response.ok) {
-      alert('Send Success');
-      setFormData({ name: '', email: '', message: '' });
-    } else {
-      alert('Send Fail');
-    }
+    axios.post('http://localhost:5000/send', formData)
+      .then((response) => {
+        setStatusMessage('Message sent successfully!');
+      })
+      .catch((error) => {
+        setStatusMessage('Failed to send message.');
+        console.error('There was an error!', error);
+      });
   };
 
   const scrollToForm = () => {
