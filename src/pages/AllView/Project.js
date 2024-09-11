@@ -13,25 +13,18 @@ function Project() {
   const navigate = useNavigate();
 
   const goBack = () => {
-    navigate(`/list?category=${encodeURIComponent(category)}`);
+    navigate(`/list?category=${category}`);
   };
 
   const { title, category } = useParams();
 
-  const categoryMap = {
-    "Beauty": "beauty",
-    "Personal Work": "personalWork",
-    "Profile": "profile",
-    "Snap": "snap"
-  };
-
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    const imagesCount = imageCountData[categoryMap[category]][title]
+    const imagesCount = imageCountData[category][title]
     const imagePaths = Array.from(
       { length: imagesCount },
-      (_, index) => `${process.env.PUBLIC_URL}/imgs/${categoryMap[category]}/${title}/${title}-${index + 1}.jpg`
+      (_, index) => `${process.env.PUBLIC_URL}/imgs/${category}/${title}/${index + 1}.jpg`
     );
 
     const validImages = [];

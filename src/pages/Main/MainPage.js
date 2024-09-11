@@ -112,7 +112,7 @@ function MainPage() {
 
       <div className="main-container">
         <div>
-          <p>{currentProject.id} &mdash; 013</p>
+          <p>{currentProject.id} &mdash; 014</p>
           <p>{currentProject.title}</p>
           <p>{currentProject.category}</p>
         </div>
@@ -139,7 +139,7 @@ const Section = ({ id, className, bgUrl, onClick }) => {
       <div className="wrapper-outer">
         <div className="wrapper-inner">
           <Link to={`/list`}>
-            <div className="background mouse-hover" style={{ backgroundImage: `url(${bgUrl})` }} />
+            <div className="background mouse-hover" style={{ backgroundImage: `url(${encodeURIComponent(bgUrl)})` }} />
           </Link>
         </div>
       </div>

@@ -1,10 +1,12 @@
 {
-  "beauty": {
-    "&byromand": 7,
-    "rom&nd_1": 8,
-    "rom&nd_2": 12
+  "Beauty": {
+    "&nd STICK CHEEK": 7,
+    "BETTER THAN CONTOUR": 8,
+    "SHEER POWDER PEARLS": 12,
+    "GLASTING COLOR GLOSS_JP": 3,
+    "SHEER TINTED STICK": 14
   },
-  "personalWork": {
+  "PersonalWork": {
     "1": 9,
     "2": 6,
     "3": 6,
@@ -16,12 +18,12 @@
     "9": 12,
     "10": 8
   },
-  "profile": {
+  "Profile": {
     "1": 2,
     "2": 3,
     "3": 2
   },
-  "snap": {
+  "Snap": {
     "1": 17,
     "2": 13,
     "3": 15,

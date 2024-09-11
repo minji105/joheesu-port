@@ -30,7 +30,7 @@ function List() {
         {chunkedImages.map((chunk, chunkIndex) => (
           <div key={chunkIndex} className="image-column">
             {chunk.map((image, index) => (
-              <Link to={`/list/${image.category}/${image.title}`} key={index + chunkIndex * chunk.length} className='img-container'>
+              <Link to={`/list/${encodeURIComponent(image.category)}/${image.title}`} key={index + chunkIndex * chunk.length} className='img-container'>
                 <img
                   src={image.img}
                   alt={image.title}
