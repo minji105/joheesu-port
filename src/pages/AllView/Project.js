@@ -13,7 +13,7 @@ function Project() {
   const navigate = useNavigate();
 
   const goBack = () => {
-    navigate(`/list?category=${category}`);
+    navigate(-1);
   };
 
   const { title, category } = useParams();

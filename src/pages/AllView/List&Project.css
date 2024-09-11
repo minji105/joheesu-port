@@ -48,7 +48,6 @@
 }
 
 .slide-container {
-  position: relative;
   width: 98vw;
   height: 78vh;
   margin: 0 1vw;
@@ -62,7 +61,6 @@
   height: 100%;
   width: 90%;
   object-fit: contain;
-  position: relative;
 }
 
 .slide-index {
@@ -150,7 +148,7 @@
   }
 
   .slide-container img {
-    max-width: 100%;
+    /* max-width: 100%; */
   }
 
   .slide-index {
