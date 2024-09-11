@@ -42,7 +42,6 @@ function List() {
                 <div className="project-info">
                   <span>{image.title}</span>
                   <span style={{ 
-                    fontSize: '12px',
                     marginTop: '7px' }}>{image.date}</span>
                 </div>
               </Link>

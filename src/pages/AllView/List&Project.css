@@ -42,6 +42,7 @@
 .grid-img {
   transition: transform 0.3s ease;
 }
+
 .img-container:hover .grid-img {
   transform: scale(1.05);
 }
@@ -58,7 +59,10 @@
 }
 
 .slide-container img {
-  max-height: 100%;
+  height: 100%;
+  width: 90%;
+  object-fit: contain;
+  position: relative;
 }
 
 .slide-index {
@@ -91,9 +95,14 @@
   justify-content: center;
   text-align: center;
   color: #fff;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
   background-color: rgba(0, 0, 0, 0.5);
   transition: opacity 0.5s ease;
   opacity: 0;
+}
+
+.project-info span:last-child {
+  font-size: smaller
 }
 
 .project-info:hover {
@@ -103,7 +112,7 @@
 .arrow {
   background: none;
   border: none;
-  font-size: 40px;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
   cursor: pointer;
   color: #c0c0c0;
   transition: color 0.3s ease;
@@ -139,7 +148,7 @@
     margin: 0 2vw;
     justify-content: center;
   }
-  
+
   .slide-container img {
     max-width: 100%;
   }

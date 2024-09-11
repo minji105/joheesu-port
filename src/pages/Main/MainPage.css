@@ -17,11 +17,13 @@
   left: 1vw;
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
 }
 
 .main-container div {
   width: 49vw;
   display: flex;
+  text-wrap: nowrap;
 }
 
 @media (max-width: 479px) {
@@ -31,7 +33,6 @@
   }
   
   .main-container {
-    align-items: flex-end;
     width: 96vw;
     left: 2vw;
     bottom: 10px;

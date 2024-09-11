@@ -42,7 +42,7 @@ function Contact() {
 
   return (
     <>
-      <Header title={'contact'}></Header>
+      <Header title={'CONTACT'}></Header>
 
       <div className="contact-container">
         <img className='profile-img' src={`${process.env.PUBLIC_URL}/imgs/contact_profile.jpg`} alt="" />
