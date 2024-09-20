@@ -1,0 +1,46 @@
+.copyright {
+  position: fixed;
+  top: 5px;
+  right: 1vw;
+  z-index: 1000;
+  mix-blend-mode: difference;
+  color: #fff;
+}
+
+.mainContainer {
+  width: 90vw;
+  margin-left: 5vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  overflow: hidden;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.imgColumn {
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  height: fit-content;
+  animation: scroll 80s linear infinite;
+}
+
+.imgColumn img {
+  width: 100%;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0 32px;
+  font-size: clamp(0.6rem, 0.8rem, 1rem);
+  font-weight: 600;
+}

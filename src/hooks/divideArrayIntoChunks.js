@@ -14,9 +14,9 @@ export const useChunkCount = (initialChunkCount = 4) => {
   useEffect(() => {
     const updateChunkCount = () => {
       if (window.innerWidth <= 768) {
-        setChunkCount(3);
+        setChunkCount(initialChunkCount - 1);
       } else {
-        setChunkCount(4);
+        setChunkCount(initialChunkCount);
       }
     };
 
