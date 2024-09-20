@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
-import Modal from 'react-modal';
 import './List&Project.css';
 import imageCountData from '../../data/imageCount.json';
 import divideArrayIntoChunks, { useChunkCount } from '../../hooks/divideArrayIntoChunks';
@@ -47,7 +46,7 @@ function Project() {
         console.log(`Image not found: ${path}`);
       };
     });
-  }, [title]);
+  }, [title, category]);
 
   const [slideIsOpen, setSlideIsOpen] = useState(false);
   const [currentImageIndex, setcurrentImageIndex] = useState(0);

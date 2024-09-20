@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './List&Project.css';
 import ProjectList from '../../data/ProjectList';
 import divideArrayIntoChunks, { useChunkCount } from '../../hooks/divideArrayIntoChunks';
@@ -9,7 +9,6 @@ import Category from '../../component/Container/Category';
 
 function List() {
   const location = useLocation();
-  const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
   const selectedCategory = queryParams.get('category') || 'All';
 

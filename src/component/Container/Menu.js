@@ -16,13 +16,13 @@ function Menu() {
     setMenuOpen(false);
   };
 
-  const handleClickOutside = (event) => {
-    if (menuRef.current && !menuRef.current.contains(event.target)) {
-      closeMenu();
-    }
-  };
-
   useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        closeMenu();
+      }
+    };
+
     if (menuOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     } else {

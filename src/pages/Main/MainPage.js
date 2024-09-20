@@ -124,7 +124,6 @@ function MainPage() {
           key={project.id}
           id={project.id}
           title={project.title}
-          className="section"
           bgUrl={project.bgurl}
           onClick={() => handleSectionClick(project.category, project.title)}
         />
@@ -133,9 +132,9 @@ function MainPage() {
   );
 }
 
-const Section = ({ id, className, bgUrl, onClick }) => {
+const Section = ({ id, bgUrl, onClick }) => {
   return (
-    <section id={id} className={`section ${className}`} onClick={onClick}>
+    <section id={id} className="section" onClick={onClick}>
       <div className="wrapper-outer">
         <div className="wrapper-inner">
           <Link to={`/list`}>

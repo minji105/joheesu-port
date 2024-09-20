@@ -63,7 +63,7 @@ function Contact() {
             </div>
             <div className="link">
               <div>
-                <span onClick={copyToClipboard} className="pointer">hee@gmail.com</span>
+                <span onClick={copyToClipboard} className="pointer">ajhjmj9@naver,com</span>
                 {!isMobile && copySuccess && <span className="copy-success">copied to clipboard</span>}
               </div>
               <Link to='https://www.instagram.com/zohuisu/' target="_blank" className='pointer'><span>Instagram</span></Link>
