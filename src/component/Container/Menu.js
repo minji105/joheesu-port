@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import './Menu.css';
+import styles from './Menu.module.scss';
 import Logo from '../Layout/Logo';
 import CloseButton from '../Buttons/CloseButton';
 
@@ -36,9 +36,9 @@ function Menu() {
 
   return (
     <>
-      <p className='menu-button' onClick={toggleMenu}>MENU</p>
+      <p className={styles.button} onClick={toggleMenu}>MENU</p>
 
-      <div ref={menuRef} className={`menu-container ${menuOpen ? 'open' : ''}`}>
+      <div ref={menuRef} className={`${styles.container} ${menuOpen ? styles.open : ''}`}>
         <Logo onClick={closeMenu}></Logo>
         <CloseButton onClick={toggleMenu} style={{ left: '0' }} />
         <div>

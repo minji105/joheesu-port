@@ -26,7 +26,7 @@ export const useChunkCount = (initialChunkCount = 4) => {
     return () => {
       window.removeEventListener('resize', updateChunkCount);
     };
-  }, []);
+  }, [initialChunkCount]);
 
   return chunkCount;
 }

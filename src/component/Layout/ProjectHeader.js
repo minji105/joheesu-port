@@ -1,11 +1,11 @@
 import React from 'react';
-import './ProjectHeader.css';
+import styles from './ProjectHeader.module.scss';
 
 function Header({ title }) {
   return (
     <>
-      <div className="project-header">
-        <h1 className='title'>{title}</h1>
+      <div className={styles.projectHeader}>
+        <h1 className={styles.title}>{title}</h1>
       </div>
     </>
   );

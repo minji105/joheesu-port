@@ -1,8 +1,8 @@
-.project-header {
+.projectHeader {
   position: relative;
   height: 22vh;
-  width: 98vw;
-  margin: 0 1vw;
+  width: var(--width-responsive);
+  margin: var(--margin-responsive);
   display: flex;
   align-items: flex-end;
 }
@@ -16,11 +16,4 @@
   mix-blend-mode: difference;
   font-size: clamp(1.2rem, 2vw, 1.5rem);
   text-align: center;
-}
-
-@media (max-width: 497px) {
-  .project-header {
-    width: 96vw;
-    margin: 0 2vw;
-  }
 }

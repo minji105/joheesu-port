@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Category.css';
+import styles from './Category.module.scss';
 import CloseButton from '../Buttons/CloseButton';
 
 function Category({ selectedCategory }) {
@@ -27,16 +27,16 @@ function Category({ selectedCategory }) {
 
   return (
     <>
-      <p className="category-button" onClick={toggleCategory}>
+      <p className={styles.categoryButton} onClick={toggleCategory}>
         {selectedCategory === 'All' ? 'Category' : selectedCategory}
       </p>
 
-      <div className={`category-container ${categoryOpen ? 'open' : ''}`}>
+      <div className={`${styles.categoryContainer} ${categoryOpen ? styles.open : ''}`}>
         <CloseButton onClick={toggleCategory} style={{ right: '0' }} />
         {categories.map((category) => (
           <p
             key={category}
-            className={selectedCategory === category ? 'active' : ''}
+            className={`${selectedCategory === category ? styles.active : ''}`}
             onClick={() => closeCategory(category)}
           >
             {category}
@@ -44,17 +44,17 @@ function Category({ selectedCategory }) {
         ))}
       </div>
 
-      <nav>
+      <div className={styles.nav}>
         {categories.map((category) => (
           <p
             key={category}
-            className={selectedCategory === category ? 'active' : ''}
+            className={`${selectedCategory === category ? styles.active : ''}`}
             onClick={() => navigate(`/list?category=${category}`)}
           >
             {category}
           </p>
         ))}
-      </nav>
+      </div>
     </>
   );
 }

@@ -1,0 +1,14 @@
+.scroll {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: var(--padding-responsive);
+  z-index: 1000;
+  cursor: pointer;
+  transform: translateY(100%);
+  transition: transform 0.5s ease;
+
+  &.visible {
+    transform: translateY(0);
+  }
+}

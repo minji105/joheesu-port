@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Contact.css';
+import styles from './Contact.module.scss';
+import headerStyles from '../../component/Layout/ProjectHeader.module.scss'
 import Header from '../../component/Layout/ProjectHeader';
 import useMobileDetection from '../../hooks/useMobileDetection';
 
@@ -9,18 +10,22 @@ function Contact() {
 
   useEffect(() => {
     const body = document.querySelector('body');
-    const header = document.querySelector('.project-header');
+    const header = document.querySelector(`.${headerStyles.projectHeader}`);
 
-    body.style.backgroundColor = '#f5f5f5';
-    header.style.position = 'fixed';
-    header.style.backgroundColor = '#f5f5f5';
+    if (header) {
+      body.style.backgroundColor = '#f5f5f5';
+      header.style.position = 'fixed';
+      header.style.backgroundColor = '#f5f5f5';
+    }
 
     return () => {
-      body.style.backgroundColor = '';
-      header.style.position = '';
-      header.style.backgroundColor = '';
+      if (header) {
+        body.style.backgroundColor = '';
+        header.style.position = '';
+        header.style.backgroundColor = '';
+      }
     }
-  })
+  }, [])
 
   const [copySuccess, setCopySuccess] = useState(false);
 
@@ -44,11 +49,11 @@ function Contact() {
     <>
       <Header title={'CONTACT'}></Header>
 
-      <div className="contact-container">
-        <img className='profile-img' src={`${process.env.PUBLIC_URL}/imgs/contact_profile.jpg`} alt="" />
+      <div className={styles.container}>
+        <img className={styles.profileImg} src={`${process.env.PUBLIC_URL}/imgs/contact_profile.jpg`} alt="profile img" />
 
-        <div className='side'>
-          <div className="info">
+        <div className={styles.side}>
+          <div className={styles.info}>
             <span>Photographer based in Seoul, Korea
               <br /><br />
               Currently affiliated with Rom&nd
@@ -56,15 +61,15 @@ function Contact() {
             </span>
           </div>
 
-          <div className="link-box">
-            <div className="link-type">
+          <div className={styles.linkBox}>
+            <div className={styles.linkType}>
               <span>E-mail</span>
               <span>SNS</span>
             </div>
-            <div className="link">
+            <div className={styles.link}>
               <div>
-                <span onClick={copyToClipboard} className="pointer">ajhjmj9@naver,com</span>
-                {!isMobile && copySuccess && <span className="copy-success">copied to clipboard</span>}
+                <span onClick={copyToClipboard} className="pointer">ajhjmj9@naver.com</span>
+                {!isMobile && copySuccess && <span className={styles.copySuccess}>copied to clipboard</span>}
               </div>
               <Link to='https://www.instagram.com/zohuisu/' target="_blank" className='pointer'><span>Instagram</span></Link>
             </div>
@@ -72,7 +77,10 @@ function Contact() {
         </div>
       </div >
 
-      <p className='site-by'>Site by Cho Minji</p>
+      <p className={styles.siteBy}>
+        Site by&nbsp;
+        <Link to='https://courageous-taffy-868429.netlify.app/' target='_blank'>Cho Minji</Link>
+      </p>
     </>
   );
 }

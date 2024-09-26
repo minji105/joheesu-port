@@ -1,7 +1,8 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
-import './List&Project.css';
+import styles from './List&Project.module.scss';
 import imageCountData from '../../data/imageCount.json';
 import divideArrayIntoChunks, { useChunkCount } from '../../hooks/divideArrayIntoChunks';
 import Header from '../../component/Layout/ProjectHeader';
@@ -92,31 +93,31 @@ function Project() {
     <>
       <Header title={title}></Header>
 
-      <div className="buttons">
+      <div className={styles.buttons}>
         <p onClick={goBack}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             stroke="currentColor"
             strokeWidth="4"
-            className='h-6 w-6 arrow-icon'>
+            className={`h-6 w-6 ${styles.arrowIcon}`}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
           </svg> Back To List</p>
-        <p onClick={toggleGrid} className={showGrid ? 'active' : ''}>View Grid</p>
+        <p onClick={toggleGrid} className={`${showGrid ? styles.active : ''}`}>View Grid</p>
       </div>
 
       {(showGrid && !slideIsOpen) && (
-        <div className="grid-container">
+        <div className={styles.gridContainer}>
           {chunkedImages.map((chunk, chunkIndex) => (
-            <div key={`column-${chunkIndex}`} className="image-column">
+            <div key={`column-${chunkIndex}`} className={styles.imageColumn}>
               {chunk.map((image, index) => (
-                <div key={`image-${chunkIndex}-${index}`} className="img-container">
+                <div key={`image-${chunkIndex}-${index}`} className={styles.imgContainer}>
                   <img
                     key={index}
                     src={image.img}
                     alt={image.title}
                     onClick={() => handleOnClick(chunkIndex, chunkCount, index)}
-                    className='grid-img'
+                    className={styles.gridImg}
                   />
                 </div>
               ))}
@@ -127,13 +128,13 @@ function Project() {
 
       {(!showGrid && slideIsOpen) && (
         <>
-          <div className="slide-container" {...handlers}>
+          <div className={styles.slideContainer} {...handlers}>
             <SlideAlert direction="horizontal" storageKey="projectPageAlertShown"/>
-            <button onClick={prevImage} className="arrow left-arrow">&lt;</button>
+            <button onClick={prevImage} className={`${styles.arrow} ${styles.leftArrow}`}>&lt;</button>
             <img src={images[currentImageIndex]?.img} alt={`image ${currentImageIndex + 1}`} />
-            <button onClick={nextImage} className="arrow right-arrow">&gt;</button>
+            <button onClick={nextImage} className={`${styles.arrow} ${styles.rightArrow}`}>&gt;</button>
           </div>
-          <div className="slide-index"><p>{currentImageIndex + 1} / {images.length}</p></div>
+          <div className={styles.slideIndex}><p>{currentImageIndex + 1} / {images.length}</p></div>
         </>
       )}
 

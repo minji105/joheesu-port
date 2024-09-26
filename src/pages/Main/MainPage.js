@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
-import './MainPage.css';
+import styles from './MainPage.module.scss';
 import MainPageImagea from '../../data/MainPageImages';
 import Logo from '../../component/Layout/Logo';
 import MouseFollower from '../../component/Layout/MouseFollower';
@@ -12,10 +12,10 @@ function MainPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    let sections = document.querySelectorAll(".section"),
-      images = document.querySelectorAll(".background"),
-      outerWrappers = document.querySelectorAll(".wrapper-outer"),
-      innerWrappers = document.querySelectorAll(".wrapper-inner"),
+    let sections = document.querySelectorAll(`.${styles.section}`),
+      images = document.querySelectorAll(`.${styles.background}`),
+      outerWrappers = document.querySelectorAll(`[class*="${styles.wrapperOuter}"]`),
+      innerWrappers = document.querySelectorAll(`[class*="${styles.wrapperInner}"]`),
       currentIndex = -1,
       wrap = (index, max) => (index + max) % max,
       animating;
@@ -108,9 +108,9 @@ function MainPage() {
 
       <SlideAlert direction="vertical" storageKey="mainPageAlertShown"/>
 
-      <p className='copyright'>@ 2024</p>
+      <p className={styles.copyright}>@ 2024</p>
 
-      <div className="main-container">
+      <div className={styles.container}>
         <div>
           <p>{currentProject.id} &mdash; 014</p>
           <p>{currentProject.title}</p>
@@ -134,11 +134,11 @@ function MainPage() {
 
 const Section = ({ id, bgUrl, onClick }) => {
   return (
-    <section id={id} className="section" onClick={onClick}>
-      <div className="wrapper-outer">
-        <div className="wrapper-inner">
+    <section id={id} className={styles.section} onClick={onClick}>
+      <div className={styles.wrapperOuter}>
+        <div className={styles.wrapperInner}>
           <Link to={`/list`}>
-            <div className="background mouse-hover" style={{ backgroundImage: `url(${encodeURIComponent(bgUrl)})` }} />
+            <div className={`${styles.background} mouse-hover`} style={{ backgroundImage: `url(${encodeURIComponent(bgUrl)})` }} />
           </Link>
         </div>
       </div>

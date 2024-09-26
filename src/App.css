@@ -1,3 +1,17 @@
+:root {
+  --padding-responsive: 5px 1vw;
+  --margin-responsive: 0 1vw;
+  --width-responsive: 98vw;
+}
+
+@media (max-width: 479px) {
+  :root {
+    --padding-responsive: 10px 2vw;
+    --margin-responsive: 0 2vw;
+    --width-responsive: 96vw;
+  }
+}
+
 body {
   background-color: #fff;
   margin: 0;

@@ -14,14 +14,6 @@ function CopyrightBottom() {
     };
   }, []);
 
-  const desktopStyle = {
-    fontSize: '15px'
-  };
-
-  const mobileStyle = {
-    fontSize: '9px'
-  };
-
   return (
     <div
       style={{
@@ -31,7 +23,7 @@ function CopyrightBottom() {
       }}>
       <span
         style={{
-          ...isMobile ? mobileStyle : desktopStyle,
+          fontSize: 'clamp(0.6rem,1.5vw,0.9rem)',
           position: 'absolute',
           top: '50%',
           left: '50%',

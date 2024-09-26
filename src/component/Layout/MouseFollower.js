@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import './MouseFollower.css';
+import styles from './MouseFollower.module.scss';
 
 function MouseFollower() {
   const cursorRef = useRef(null);
@@ -64,9 +64,8 @@ function MouseFollower() {
   }, []);
 
   return (
-    <div className={`mouse-follower ${isHovering ? 'hovering' : ''}`} ref={cursorRef}>
-      <div className="cursor__circle"></div>
-      <div className="cursor__label"><span>Take a look</span></div>
+    <div className={`${styles.mouseFollower} ${isHovering ? styles.hovering : ''}`} ref={cursorRef}>
+      <div className={styles.label}><span>Take a look</span></div>
     </div>
   );
 }

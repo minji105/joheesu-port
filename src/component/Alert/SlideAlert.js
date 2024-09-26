@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './SlideAlert.css';
+import styles from './SlideAlert.module.scss';
 import useMobileDetection from '../../hooks/useMobileDetection';
 
 function SlideAlert({ direction, storageKey }) {
@@ -24,7 +24,7 @@ function SlideAlert({ direction, storageKey }) {
 
   return (
     <>
-      <div className="slide-alert">
+      <div className={styles.slideAlert}>
         {message}
       </div>
     </>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './ScrollTop.css';
+import styles from './ScrollTop.module.scss';
 
 const ScrollTop = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -27,7 +27,7 @@ const ScrollTop = () => {
   }, []);
 
   return (
-    <div className={`scroll-to-top ${isVisible ? 'visible' : ''}`} onClick={scrollToTop}>
+    <div className={`${styles.scroll} ${isVisible ? styles.visible : ''}`} onClick={scrollToTop}>
       {isVisible && <p>Top</p>}
     </div>
   );

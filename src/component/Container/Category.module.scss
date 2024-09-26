@@ -1,4 +1,4 @@
-nav {
+.nav {
   width: 100vw;
   position: fixed;
   top: 5px;
@@ -6,31 +6,31 @@ nav {
   justify-content: flex-end;
   color: #c0c0c0;
   z-index: 100;
+
+  p {
+    margin-right: 2vw;
+    cursor: pointer;
+    transition: color 0.5s ease;
+
+    &:hover,
+    &.active {
+      color: #000;
+    }
+  }
 }
 
-nav p {
-  margin-right: 2vw;
-  cursor: pointer;
-  transition: color 0.5s ease;
-}
-
-nav p:hover,
-nav p.active {
-  color: #000;
-}
-
-.category-button {
+.categoryButton {
   position: fixed;
   top: 0;
   right: 0;
-  padding: 10px 2vw;
+  padding: var(--padding-responsive);
   mix-blend-mode: difference;
   color: #6b6b6b;
   display: none;
   z-index: 1000;
 }
 
-.category-container {
+.categoryContainer {
   z-index: 1000;
   width: 100vw;
   height: 100vh;
@@ -44,23 +44,23 @@ nav p.active {
   transform: translateY(-100%);
   opacity: 0;
   transition: all 0.5s ease-in-out;
+
+  p {
+    margin: 1.2vh 0;
+  }
+
+  &.open {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-.category-container p {
-  margin: 1.2vh 0;
-}
-
-.category-container.open {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-@media (max-width:497px) {
-  nav {
+@media (max-width: 640px) {
+  .nav {
     display: none;
   }
 
-  .category-button {
+  .categoryButton {
     display: block;
   }
 }
