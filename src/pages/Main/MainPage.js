@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import styles from './MainPage.module.scss';
-import MainPageImagea from '../../data/MainPageImages';
+import MainPageImages from '../../data/MainPageImages';
 import Logo from '../../component/Layout/Logo';
 import MouseFollower from '../../component/Layout/MouseFollower';
 import SlideAlert from '../../component/Alert/SlideAlert';
@@ -15,86 +15,75 @@ function MainPage() {
     let sections = document.querySelectorAll(`.${styles.section}`),
       images = document.querySelectorAll(`.${styles.background}`),
       outerWrappers = document.querySelectorAll(`[class*="${styles.wrapperOuter}"]`),
-      innerWrappers = document.querySelectorAll(`[class*="${styles.wrapperInner}"]`),
-      currentIndex = -1,
-      wrap = (index, max) => (index + max) % max,
-      animating;
+      innerWrappers = document.querySelectorAll(`[class*="${styles.wrapperInner}"]`);
 
-    gsap.set(outerWrappers, { yPercent: 100 });
-    gsap.set(innerWrappers, { yPercent: -100 });
+    let currentIndex = -1;
+    let wrap = (index, max) => (index + max) % max;
+    let animating;
 
-    function gotoSection(index, direction) {
+    const gotoSection = (index, direction) => {
       index = wrap(index, sections.length);
       animating = true;
 
-      let fromTop = direction === -1;
-      let dFactor = fromTop ? -1 : 1;
-      let tl = gsap.timeline({ defaults: { duration: 1.25, ease: "power1.inOut" }, onComplete: () => (animating = false) });
+      let timeline = gsap.timeline({
+        defaults: { duration: 1.25, ease: "power1.inOut" },
+        onComplete: () => (animating = false)
+      });
 
       if (currentIndex >= 0) {
         gsap.set(sections[currentIndex], { zIndex: 0 });
-        tl.to(images[currentIndex], { yPercent: -15 * dFactor })
+        timeline.to(images[currentIndex], { yPercent: -15 * direction })
           .set(sections[currentIndex], { autoAlpha: 0 });
       }
 
       gsap.set(sections[index], { autoAlpha: 1, zIndex: 1 });
-      tl.fromTo([outerWrappers[index], innerWrappers[index]], { yPercent: (i) => (i ? -100 * dFactor : 100 * dFactor) }, { yPercent: 0 }, 0)
-        .fromTo(images[index], { yPercent: 15 * dFactor }, { yPercent: 0 }, 0)
+      timeline.fromTo(
+        [outerWrappers[index], innerWrappers[index]],
+        { yPercent: (i) => (i ? -100 * direction : 100 * direction) },
+        { yPercent: 0 },
+        0
+      ).fromTo(images[index], { yPercent: 15 * direction }, { yPercent: 0 }, 0)
 
       currentIndex = index;
 
-      setCurrentProject(MainPageImagea[index]);
+      setCurrentProject(MainPageImages[index]);
     }
 
-    let lastTap = 0;
-    document.addEventListener("touchend", function (event) {
-      let currentTime = new Date().getTime();
-      let tapLength = currentTime - lastTap;
-      if (tapLength < 500 && tapLength > 0) {
-        gotoSection(currentIndex + 1, 1);
-        event.preventDefault();
+    const handleWheel = (event) => {
+      if (!animating) {
+        const direction = event.deltaY > 0 ? 1 : -1;
+        gotoSection(currentIndex + direction, direction);
       }
-      lastTap = currentTime;
-    });
+    }
 
-    window.addEventListener("wheel", (event) => {
-      if (event.deltaY < 0 && !animating) {
-        gotoSection(currentIndex - 1, -1);
-      } else if (event.deltaY > 0 && !animating) {
-        gotoSection(currentIndex + 1, 1);
-      }
-    });
+    const handleTouch = (e) => e.changedTouches[0].screenY;
 
-    let touchStartY = 0;
-    let touchEndY = 0;
+    const addEventListeners = () => {
+      window.addEventListener('wheel', handleWheel);
 
-    const handleTouchStart = (e) => {
-      touchStartY = e.changedTouches[0].screenY;
+      let touchStartY = 0;
+      window.addEventListener('touchstart', (e) => {
+        touchStartY = handleTouch(e);
+      });
+      
+      window.addEventListener('touchend', (e) => {
+        const touchEndY = handleTouch(e);
+        if (!animating) {
+          const direction = touchEndY < touchStartY ? 1 : -1;
+          gotoSection(currentIndex + direction, direction);
+        }
+      });
     };
 
-    const handleTouchEnd = (e) => {
-      touchEndY = e.changedTouches[0].screenY;
-      handleGesture();
-    };
-
-    const handleGesture = () => {
-      if (touchEndY < touchStartY && !animating) {
-        gotoSection(currentIndex + 1, 1);
-      }
-      if (touchEndY > touchStartY && !animating) {
-        gotoSection(currentIndex - 1, -1);
-      }
-    };
-
-    window.addEventListener("touchstart", handleTouchStart);
-    window.addEventListener("touchend", handleTouchEnd);
+    const removeEventListeners = () => {
+      window.removeEventListener('wheel', handleWheel);
+      window.removeEventListener('touch', handleTouch);
+    }
 
     gotoSection(0, 1);
+    addEventListeners();
 
-    return () => {
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchend", handleTouchEnd);
-    };
+    return () => removeEventListeners();
   }, []);
 
   const handleSectionClick = (category, title) => {
@@ -106,7 +95,7 @@ function MainPage() {
       <Logo />
       <MouseFollower />
 
-      <SlideAlert direction="vertical" storageKey="mainPageAlertShown"/>
+      <SlideAlert direction="vertical" storageKey="mainPageAlertShown" />
 
       <p className={styles.copyright}>@ 2024</p>
 
@@ -119,7 +108,7 @@ function MainPage() {
         <p>scroll</p>
       </div>
 
-      {MainPageImagea.map((project, index) => (
+      {MainPageImages.map((project, index) => (
         <Section
           key={project.id}
           id={project.id}
