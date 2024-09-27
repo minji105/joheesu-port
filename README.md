@@ -4,6 +4,9 @@
 This site displays the portfolio of photographer Cho Hee-su.\
 It was made responsive so that it can be viewed on mobile and PC.
 
+사진작가 조희수의 포트폴리오 사이트입니다.
+반응형으로 제작하였습니다.
+
 url: https://hsphotography.site/
 
 ## Tech Stack
