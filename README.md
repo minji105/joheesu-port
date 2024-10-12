@@ -16,7 +16,7 @@ url: https://hsphotography.site/
 ## Pages (Web | Mobile)
 
 - **Main Page** <br/>
-<div style="display: flex; justify-content: space-between;">
+<div style="display: flex; flex-direction: column;">
   <img width="60%" src="https://github.com/user-attachments/assets/f85105dd-d664-4e83-b7a4-6ba644d23fe9" />
   <img width="20%" src="https://github.com/user-attachments/assets/f04985f3-3be2-4863-b7b8-e1bbd0e81b79" />
 </div>
@@ -27,8 +27,10 @@ url: https://hsphotography.site/
 4. 모바일에서는 최초 1회 "swipe up or down" 알림이 표시됩니다.
 
 - **Project List Page** <br/>
-<img width="60%" src="https://github.com/user-attachments/assets/4a04ea72-7d36-44c3-9045-8adbf8687a6a">
-<img width="20%" src="https://github.com/user-attachments/assets/74dc3d39-35c2-429f-a038-8c992a004341">
+<div style="display: flex; flex-direction: column;">
+  <img width="60%" src="https://github.com/user-attachments/assets/4a04ea72-7d36-44c3-9045-8adbf8687a6a">
+  <img width="20%" src="https://github.com/user-attachments/assets/74dc3d39-35c2-429f-a038-8c992a004341">
+</div>
 
 1. 상단 카테고리 메뉴를 통해 카테고리별로 프로젝트를 필터링할 수 있습니다.
 2. 모바일에서는 카테고리 바가 버튼으로 대체됩니다.
@@ -36,15 +38,19 @@ url: https://hsphotography.site/
 4. 'Top' 버튼을 추가해 빠르게 페이지 상단으로 이동할 수 있습니다.
 
 - **Project Detail Page** <br/>
-<img width="60%" src="https://github.com/user-attachments/assets/8b6e6fdd-3837-470e-bcc5-87b8bd6a7d37">
-<img width="20%" src="https://github.com/user-attachments/assets/70bf027b-8053-4041-a5ab-7d22afa1df6a">
+<div style="display: flex; flex-direction: column;">
+  <img width="60%" src="https://github.com/user-attachments/assets/8b6e6fdd-3837-470e-bcc5-87b8bd6a7d37">
+  <img width="20%" src="https://github.com/user-attachments/assets/70bf027b-8053-4041-a5ab-7d22afa1df6a">
+</div>
 
 1. 이미지를 클릭하면 슬라이더로 전환되어 한장씩 볼 수 있습니다.
 2. 모바일에서는 최초 1회 "swipe right or left" 알림이 표시됩니다.
 3. 'Top' 버튼을 추가해 빠르게 페이지 상단으로 이동할 수 있습니다.
 
 - **Contact** <br/>
-<img width="60%" src="https://github.com/user-attachments/assets/2bf181f9-bbd7-4e53-88dd-6798498f2388">
-<img width="20%" src="https://github.com/user-attachments/assets/16e10640-863d-4a56-acc4-622670e4ce5a">
+<div style="display: flex; flex-direction: column;">
+  <img width="60%" src="https://github.com/user-attachments/assets/2bf181f9-bbd7-4e53-88dd-6798498f2388">
+  <img width="20%" src="https://github.com/user-attachments/assets/16e10640-863d-4a56-acc4-622670e4ce5a">
+</div>
 
 1. 간단한 소개와 이메일, sns를 표시합니다. 이메일을 클릭하면 클립보드에 복사되도록 하였습니다.
