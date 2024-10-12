@@ -16,15 +16,17 @@ url: https://hsphotography.site/
 ## Pages (Web | Mobile)
 
 - **Main Page** <br/>
-<img width="60%" src="https://github.com/user-attachments/assets/f85105dd-d664-4e83-b7a4-6ba644d23fe9">  
-<img width="20%" src="https://github.com/user-attachments/assets/f04985f3-3be2-4863-b7b8-e1bbd0e81b79">
+<div style="display: flex; justify-content: space-between;">
+  <img width="60%" src="https://github.com/user-attachments/assets/f85105dd-d664-4e83-b7a4-6ba644d23fe9" />
+  <img width="20%" src="https://github.com/user-attachments/assets/f04985f3-3be2-4863-b7b8-e1bbd0e81b79" />
+</div>
 
 1. GSAP을 사용하여 스크롤 및 스와이프에 따른 애니메이션 전환 효과를 넣었습니다.
 2. 일부 프로젝트만 대표로 표시되며, 클릭 시 해당 프로젝트 상세 페이지로 전환됩니다.
 3. "Take a look" 문구가 커서를 따라다니며 사용자의 클릭을 유도합니다.
 4. 모바일에서는 최초 1회 "swipe up or down" 알림이 표시됩니다.
 
-- **Project List Page**
+- **Project List Page** <br/>
 <img width="60%" src="https://github.com/user-attachments/assets/4a04ea72-7d36-44c3-9045-8adbf8687a6a">
 <img width="20%" src="https://github.com/user-attachments/assets/74dc3d39-35c2-429f-a038-8c992a004341">
 
@@ -33,7 +35,7 @@ url: https://hsphotography.site/
 3. 프로젝트에 마우스를 올리면 프로젝트 이름과 제작 시기가 표시되고, 클릭 시 상세 페이지로 이동합니다.
 4. 'Top' 버튼을 추가해 빠르게 페이지 상단으로 이동할 수 있습니다.
 
-- **Project Detail Page**
+- **Project Detail Page** <br/>
 <img width="60%" src="https://github.com/user-attachments/assets/8b6e6fdd-3837-470e-bcc5-87b8bd6a7d37">
 <img width="20%" src="https://github.com/user-attachments/assets/70bf027b-8053-4041-a5ab-7d22afa1df6a">
 
@@ -41,7 +43,7 @@ url: https://hsphotography.site/
 2. 모바일에서는 최초 1회 "swipe right or left" 알림이 표시됩니다.
 3. 'Top' 버튼을 추가해 빠르게 페이지 상단으로 이동할 수 있습니다.
 
-- **Contact**
+- **Contact** <br/>
 <img width="60%" src="https://github.com/user-attachments/assets/2bf181f9-bbd7-4e53-88dd-6798498f2388">
 <img width="20%" src="https://github.com/user-attachments/assets/16e10640-863d-4a56-acc4-622670e4ce5a">
 
