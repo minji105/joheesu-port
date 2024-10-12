@@ -16,10 +16,8 @@ url: https://hsphotography.site/
 ## Pages (Web | Mobile)
 
 - **Main Page** <br/>
-<div style="display: flex; flex-direction: column;">
   <img width="60%" src="https://github.com/user-attachments/assets/f85105dd-d664-4e83-b7a4-6ba644d23fe9" />
   <img width="20%" src="https://github.com/user-attachments/assets/f04985f3-3be2-4863-b7b8-e1bbd0e81b79" />
-</div>
 
 1. GSAP을 사용하여 스크롤 및 스와이프에 따른 애니메이션 전환 효과를 넣었습니다.
 2. 일부 프로젝트만 대표로 표시되며, 클릭 시 해당 프로젝트 상세 페이지로 전환됩니다.
