@@ -27,7 +27,7 @@ url: https://hsphotography.site/
 4. 모바일에서는 최초 1회 "swipe up or down" 알림이 표시됩니다.
 
 - **Project List Page** <br/>
-<div style="display: flex; fjustify-content: space-between;">
+<div style="display: flex; justify-content: space-between;">
   <img width="60%" src="https://github.com/user-attachments/assets/4a04ea72-7d36-44c3-9045-8adbf8687a6a">
   <img width="20%" src="https://github.com/user-attachments/assets/74dc3d39-35c2-429f-a038-8c992a004341">
 </div>
