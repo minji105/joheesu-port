@@ -15,7 +15,7 @@ url: https://hsphotography.site/
 
 ## Pages (Web | Mobile)
 
-- **Main Page**
+- **Main Page** <br/>
 <img width="60%" src="https://github.com/user-attachments/assets/f85105dd-d664-4e83-b7a4-6ba644d23fe9">  
 <img width="20%" src="https://github.com/user-attachments/assets/f04985f3-3be2-4863-b7b8-e1bbd0e81b79">
 
