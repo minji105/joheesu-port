@@ -21,32 +21,29 @@ function Project() {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    const imagesCount = imageCountData[category][title]
+    const imagesCount = imageCountData[category][title];
     const imagePaths = Array.from(
       { length: imagesCount },
       (_, index) => `${process.env.PUBLIC_URL}/imgs/${category}/${title}/${index + 1}.jpg`
     );
 
-    const validImages = [];
-    let loadedImagesCount = 0;
-    imagePaths.forEach((path) => {
-      const img = new Image();
-      img.src = path;
-      img.onload = () => {
-        validImages.push({ img: path, title: `image${loadedImagesCount + 1}`, date: new Date().toLocaleDateString() });
-        loadedImagesCount++;
-        if (loadedImagesCount === imagePaths.length) {
-          setImages(validImages);
+    const loadImages = async () => {
+      const validImages = await Promise.all(imagePaths.map(async (path, index) => {
+        try {
+          const img = new Image();
+          img.src = path;
+          await img.decode();
+          return { img: path, title: `image${index + 1}` };
+        } catch (error) {
+          console.log(`Image not found: ${path}`);
+          return null;
         }
-      };
-      img.onerror = () => {
-        loadedImagesCount++;
-        if (loadedImagesCount === imagePaths.length) {
-          setImages(validImages);
-        }
-        console.log(`Image not found: ${path}`);
-      };
-    });
+      }));
+  
+      setImages(validImages.filter(Boolean));
+    };
+  
+    loadImages();
   }, [title, category]);
 
   const [slideIsOpen, setSlideIsOpen] = useState(false);

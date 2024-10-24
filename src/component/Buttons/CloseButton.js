@@ -15,7 +15,7 @@ function CloseButton({ onClick, style }) {
   }, []);
 
   const desktopStyle = {
-    margin: '0 1vw'
+    margin: '-10px 8px 0'
   };
 
   const mobileStyle = {
@@ -30,7 +30,7 @@ function CloseButton({ onClick, style }) {
         ...style,
         ...isMobile ? mobileStyle : desktopStyle,
         fontSize: '20px',
-        padding: '1vh 1vw',
+        padding: '5px',
         position: 'fixed',
         cursor: 'pointer'
       }}>

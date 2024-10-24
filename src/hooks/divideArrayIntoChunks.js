@@ -13,20 +13,18 @@ export const useChunkCount = (initialChunkCount = 4) => {
 
   useEffect(() => {
     const updateChunkCount = () => {
-      if (window.innerWidth <= 768) {
-        setChunkCount(initialChunkCount - 1);
-      } else {
-        setChunkCount(initialChunkCount);
+      const newChunkCount = window.innerWidth <= 768 ? initialChunkCount - 1 : initialChunkCount;
+
+      if (newChunkCount !== chunkCount) {
+        setChunkCount(newChunkCount);
       }
     };
 
     window.addEventListener('resize', updateChunkCount);
     updateChunkCount();
 
-    return () => {
-      window.removeEventListener('resize', updateChunkCount);
-    };
-  }, [initialChunkCount]);
+    return () => window.removeEventListener('resize', updateChunkCount);
+  }, [initialChunkCount, chunkCount]);
 
   return chunkCount;
 }
