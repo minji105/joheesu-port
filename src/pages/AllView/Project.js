@@ -12,14 +12,13 @@ import CopyrightBottom from '../../component/Layout/CopyrightBottom';
 
 function Project() {
   const navigate = useNavigate();
-
-  const goBack = () => {
-    navigate(-1);
-  };
+  const goBack = () => navigate(-1);
 
   const { title, category } = useParams();
-
   const [images, setImages] = useState([]);
+  const [slideIsOpen, setSlideIsOpen] = useState(false);
+  const [currentImageIndex, setcurrentImageIndex] = useState(0);
+  const [showGrid, setShowGrid] = useState(true);
 
   useEffect(() => {
     const imagesCount = imageCountData[category][title];
@@ -40,15 +39,12 @@ function Project() {
           return null;
         }
       }));
-  
+
       setImages(validImages.filter(Boolean));
     };
-  
+
     loadImages();
   }, [title, category]);
-
-  const [slideIsOpen, setSlideIsOpen] = useState(false);
-  const [currentImageIndex, setcurrentImageIndex] = useState(0);
 
   const openSlide = (index) => {
     setcurrentImageIndex(index);
@@ -63,9 +59,6 @@ function Project() {
     setcurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   }
 
-
-  const [showGrid, setShowGrid] = useState(true);
-
   const toggleGrid = () => {
     setShowGrid((prevShowGrid) => !prevShowGrid);
     setSlideIsOpen((prevSlideIsOpen) => !prevSlideIsOpen);
@@ -75,7 +68,6 @@ function Project() {
     toggleGrid(false);
     openSlide(chunkIndex + chunkCount * index);
   };
-
 
   const handlers = useSwipeable({
     onSwipedLeft: nextImage,
@@ -111,13 +103,13 @@ function Project() {
               {chunk.map((image, index) => (
                 <div key={`image-${chunkIndex}-${index}`} className={styles.imgContainer}>
                   <LazyLoad>
-                  <img
-                    key={index}
-                    src={image.img}
-                    alt={image.title}
-                    onClick={() => handleOnClick(chunkIndex, chunkCount, index)}
-                    className={styles.gridImg}
-                  />
+                    <img
+                      key={index}
+                      src={image.img}
+                      alt={image.title}
+                      onClick={() => handleOnClick(chunkIndex, chunkCount, index)}
+                      className={styles.gridImg}
+                    />
                   </LazyLoad>
                 </div>
               ))}
@@ -129,7 +121,7 @@ function Project() {
       {(!showGrid && slideIsOpen) && (
         <>
           <div className={styles.slideContainer} {...handlers}>
-            <SlideAlert direction="horizontal" storageKey="projectPageAlertShown"/>
+            <SlideAlert direction="horizontal" storageKey="projectPageAlertShown" />
             <button onClick={prevImage} className={`${styles.arrow} ${styles.leftArrow}`}>&lt;</button>
             <img src={images[currentImageIndex]?.img} alt={`image ${currentImageIndex + 1}`} />
             <button onClick={nextImage} className={`${styles.arrow} ${styles.rightArrow}`}>&gt;</button>
