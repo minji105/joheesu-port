@@ -36,7 +36,16 @@ function List() {
                 className={styles.imgContainer}>
                 <LazyLoad offset={1000}>
                   <img
-                    src={image.img}
+                    srcSet={`${image.img.small} 480w,
+                              ${image.img.medium} 1024w,
+                              ${image.img.large} 1531w,
+                              ${image.img.xlarge} 1920w
+                              `}
+                    sizes="(max-width: 480px) 480px,
+                           (max-width: 1024px) 1024px,
+                           (max-width: 1531px) 1531px,
+                           1920px"
+                    src={image.img.large}
                     alt={image.title}
                     style={{
                       position: 'absolute',
