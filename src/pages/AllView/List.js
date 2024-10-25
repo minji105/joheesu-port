@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import LazyLoad from 'react-lazyload';
 import styles from './List&Project.module.scss';
 import ProjectList from '../../data/ProjectList';
 import divideArrayIntoChunks, { useChunkCount } from '../../hooks/divideArrayIntoChunks';
@@ -19,24 +20,6 @@ function List() {
   const chunkCount = useChunkCount();
   const chunkedImages = divideArrayIntoChunks(filteredData, chunkCount);
 
-  // useEffect(() => {
-  //   const imageContainers = document.querySelectorAll(`.${styles.imgContainer.replace(/&/g, '\\&')}`);
-
-  //   imageContainers.forEach((container) => {
-  //     const img = container.querySelector('img');
-
-  //     // 이미지가 로드되었을 때 비율을 계산
-  //     img.onload = () => {
-  //       const aspectRatio = img.naturalHeight / img.naturalWidth;
-  //       container.style.paddingBottom = `${aspectRatio * 100}%`;
-  //     };
-
-  //     if (img.complete) {
-  //       img.onload();
-  //     }
-  //   });
-  // }, [filteredData]);
-
   return (
     <>
       <Header title={'PROJECTS'}></Header>
@@ -51,19 +34,21 @@ function List() {
                 to={`/list/${encodeURIComponent(image.category)}/${image.title}`}
                 key={index + chunkIndex * chunk.length}
                 className={styles.imgContainer}>
-                <img
-                  src={image.img}
-                  alt={image.title}
-                  style={{
-                    position: 'absolute',
-                    top: '0',
-                    left: '0'
-                  }}
-                  onLoad={(e) => {
-                    const aspectRatio = e.target.naturalHeight / e.target.naturalWidth;
-                    e.currentTarget.parentElement.style.paddingBottom = `${aspectRatio * 100}%`;
-                  }}
-                />
+                <LazyLoad offset={1000}>
+                  <img
+                    src={image.img}
+                    alt={image.title}
+                    style={{
+                      position: 'absolute',
+                      top: '0',
+                      left: '0'
+                    }}
+                    onLoad={(e) => {
+                      const aspectRatio = e.target.naturalHeight / e.target.naturalWidth;
+                      e.currentTarget.parentElement.style.paddingBottom = `${aspectRatio * 100}%`;
+                    }}
+                  />
+                </LazyLoad>
                 <div className={styles.projectInfo}>
                   <span>{image.title}</span>
                   <span style={{

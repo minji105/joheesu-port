@@ -1,19 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 function CopyrightBottom() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 479);
-
-  const handleResize = () => {
-    setIsMobile(window.innerWidth <= 479);
-  };
-
-  useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
   return (
     <div
       style={{

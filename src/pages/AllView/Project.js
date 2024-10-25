@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
+import LazyLoad from 'react-lazyload';
 import styles from './List&Project.module.scss';
 import imageCountData from '../../data/imageCount.json';
 import divideArrayIntoChunks, { useChunkCount } from '../../hooks/divideArrayIntoChunks';
@@ -24,7 +25,7 @@ function Project() {
     const imagesCount = imageCountData[category][title];
     const imagePaths = Array.from(
       { length: imagesCount },
-      (_, index) => `${process.env.PUBLIC_URL}/imgs/${category}/${title}/${index + 1}.jpg`
+      (_, index) => `${process.env.PUBLIC_URL}/imgs/${category}/${title}/${index + 1}.webp`
     );
 
     const loadImages = async () => {
@@ -109,6 +110,7 @@ function Project() {
             <div key={`column-${chunkIndex}`} className={styles.imageColumn}>
               {chunk.map((image, index) => (
                 <div key={`image-${chunkIndex}-${index}`} className={styles.imgContainer}>
+                  <LazyLoad>
                   <img
                     key={index}
                     src={image.img}
@@ -116,6 +118,7 @@ function Project() {
                     onClick={() => handleOnClick(chunkIndex, chunkCount, index)}
                     className={styles.gridImg}
                   />
+                  </LazyLoad>
                 </div>
               ))}
             </div>
