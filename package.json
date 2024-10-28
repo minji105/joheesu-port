@@ -3,24 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.7.3",
-    "body-parser": "^1.20.2",
-    "cors": "^2.8.5",
-    "emailjs-com": "^3.2.0",
-    "express": "^4.19.2",
+    "@fullhuman/postcss-purgecss": "^6.0.0",
+    "@reduxjs/toolkit": "^2.3.0",
     "gsap": "^3.12.5",
-    "nodemailer": "^6.9.14",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-lazyload": "^3.2.1",
-    "react-modal": "^3.16.1",
-    "react-router-dom": "^6.26.0",
-    "react-scripts": "5.0.1",
-    "react-swipeable": "^7.0.1",
-    "web-vitals": "^2.1.4"
+    "react-router-dom": "^6.27.0",
+    "react-scripts": "^5.0.1",
+    "react-swipeable": "^7.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -49,10 +40,13 @@
     ]
   },
   "devDependencies": {
-    "cra-bundle-analyzer": "^0.1.1",
+    "css-minimizer-webpack-plugin": "^7.0.0",
+    "eslint-config-react-app": "^7.0.1",
     "gh-pages": "^6.1.1",
-    "sass": "^1.79.3",
-    "sass-loader": "^16.0.2"
+    "mini-css-extract-plugin": "^2.9.1",
+    "sass": "^1.80.4",
+    "sass-loader": "^16.0.2",
+    "terser-webpack-plugin": "^5.3.10"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",

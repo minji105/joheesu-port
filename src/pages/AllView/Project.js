@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSwipeable } from 'react-swipeable';
 import LazyLoad from 'react-lazyload';
@@ -7,8 +7,9 @@ import styles from './List&Project.module.scss';
 import imageCountData from '../../data/imageCount.json';
 import divideArrayIntoChunks, { useChunkCount } from '../../hooks/divideArrayIntoChunks';
 import Header from '../../component/Layout/ProjectHeader';
-import SlideAlert from '../../component/Alert/SlideAlert';
 import CopyrightBottom from '../../component/Layout/CopyrightBottom';
+
+const SlideAlert = lazy(() => import('../../component/Alert/SlideAlert'));
 
 function Project() {
   const navigate = useNavigate();
@@ -121,7 +122,9 @@ function Project() {
       {(!showGrid && slideIsOpen) && (
         <>
           <div className={styles.slideContainer} {...handlers}>
-            <SlideAlert direction="horizontal" storageKey="projectPageAlertShown" />
+            <Suspense>
+              <SlideAlert direction="horizontal" storageKey="projectPageAlertShown" />
+            </Suspense>
             <button onClick={prevImage} className={`${styles.arrow} ${styles.leftArrow}`}>&lt;</button>
             <img src={images[currentImageIndex]?.img} alt={`image ${currentImageIndex + 1}`} />
             <button onClick={nextImage} className={`${styles.arrow} ${styles.rightArrow}`}>&gt;</button>

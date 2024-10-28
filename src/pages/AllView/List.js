@@ -34,30 +34,39 @@ function List() {
                 to={`/list/${encodeURIComponent(image.category)}/${image.title}`}
                 key={index + chunkIndex * chunk.length}
                 className={styles.imgContainer}>
-                <LazyLoad offset={1000}>
-                  <img
-                    srcSet={`${image.img.small} 480w,
-                              ${image.img.medium} 1024w,
-                              ${image.img.large} 1531w,
-                              ${image.img.xlarge} 1920w
-                              `}
-                    sizes="(max-width: 480px) 480px,
-                           (max-width: 1024px) 1024px,
-                           (max-width: 1531px) 1531px,
-                           1920px"
-                    src={image.img.large}
-                    alt={image.title}
-                    style={{
-                      position: 'absolute',
-                      top: '0',
-                      left: '0'
-                    }}
-                    onLoad={(e) => {
-                      const aspectRatio = e.target.naturalHeight / e.target.naturalWidth;
-                      e.currentTarget.parentElement.style.paddingBottom = `${aspectRatio * 100}%`;
-                    }}
-                  />
+                <LazyLoad offset={300}>
+                  <picture>
+                    <source
+                      media="(max-width: 480px)"
+                      srcSet={image.img.small}
+                      sizes="148px"
+                    />
+                    <source
+                      media="(max-width: 1024px)"
+                      srcSet={image.img.medium}
+                      sizes="245px"
+                    />
+                    <source
+                      media="(max-width: 1540px)"
+                      srcSet={image.img.large}
+                      sizes="365px"
+                    />
+                    <source
+                      media="(min-width: 1541px)"
+                      srcSet={image.img.xlarge}
+                      sizes="1920px"
+                    />
+                    <img
+                      src={image.img.small}
+                      alt={image.title}
+                      onLoad={(e) => {
+                        const aspectRatio = e.target.naturalHeight / e.target.naturalWidth;
+                        e.currentTarget.parentElement.style.paddingBottom = `${aspectRatio * 100}%`;
+                      }}
+                    />
+                  </picture>
                 </LazyLoad>
+
                 <div className={styles.projectInfo}>
                   <span>{image.title}</span>
                   <span style={{

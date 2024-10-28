@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import styles from './MainPage.module.scss';
 import MainPageImages from '../../data/MainPageImages';
 import Logo from '../../component/Layout/Logo';
 import MouseFollower from '../../component/Layout/MouseFollower';
-import SlideAlert from '../../component/Alert/SlideAlert';
+
+const SlideAlert = lazy(() => import('../../component/Alert/SlideAlert'));
 
 function MainPage() {
   const [currentProject, setCurrentProject] = useState({ id: '', title: '', category: '' });
@@ -65,7 +67,7 @@ function MainPage() {
       window.addEventListener('touchstart', (e) => {
         touchStartY = handleTouch(e);
       });
-      
+
       window.addEventListener('touchend', (e) => {
         const touchEndY = handleTouch(e);
         if (!animating) {
@@ -95,7 +97,9 @@ function MainPage() {
       <Logo />
       <MouseFollower />
 
-      <SlideAlert direction="vertical" storageKey="mainPageAlertShown" />
+      <Suspense>
+        <SlideAlert direction="vertical" storageKey="mainPageAlertShown" />
+      </Suspense>
 
       <p className={styles.copyright}>@ 2024</p>
 
@@ -113,7 +117,7 @@ function MainPage() {
           key={project.id}
           id={project.id}
           title={project.title}
-          bgUrl={project.bgurl}
+          bgUrlArray={project.bgurl}
           onClick={() => handleSectionClick(project.category, project.title)}
         />
       ))}
@@ -121,12 +125,38 @@ function MainPage() {
   );
 }
 
-const Section = ({ id, bgUrl, onClick }) => {
+const Section = ({ id, bgUrlArray, onClick }) => {
+  const [bgUrl, setBgUrl] = useState('');
+
+  useEffect(() => {
+    const updateBgUrl = () => {
+      const width = window.innerWidth;
+      if (width > 1536) {
+        setBgUrl(bgUrlArray[0]);
+      } else if (width > 1024) {
+        setBgUrl(bgUrlArray[1]);
+      } else if (width > 768) {
+        setBgUrl(bgUrlArray[2]);
+      } else if (width > 480) {
+        setBgUrl(bgUrlArray[3]);
+      } else {
+        setBgUrl(bgUrlArray[4]);
+      }
+    };
+
+    updateBgUrl();
+    window.addEventListener('resize', updateBgUrl); 
+
+    return () => {
+      window.removeEventListener('resize', updateBgUrl);
+    };
+  }, [bgUrlArray]);
+
   return (
     <section id={id} className={styles.section} onClick={onClick}>
       <div className={styles.wrapperOuter}>
         <div className={styles.wrapperInner}>
-          <Link to={`/list`}>
+          <Link to={'/list'}>
             <div className={`${styles.background} mouse-hover`} style={{ backgroundImage: `url(${encodeURIComponent(bgUrl)})` }} />
           </Link>
         </div>
