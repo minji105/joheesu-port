@@ -7,8 +7,8 @@ const MainPageImagea = [
       `${process.env.PUBLIC_URL}/imgs/Beauty/BETTER THAN CONTOUR/8.webp`,
       `${process.env.PUBLIC_URL}/imgs/Beauty/BETTER THAN CONTOUR/8-1536.webp`,
       `${process.env.PUBLIC_URL}/imgs/Beauty/BETTER THAN CONTOUR/8-1024.webp`,
-      `${process.env.PUBLIC_URL}/imgs/Beauty/BETTER THAN CONTOUR/8-768.webp`,
-      `${process.env.PUBLIC_URL}/imgs/Beauty/BETTER THAN CONTOUR/8-480.webp`,
+      `${process.env.PUBLIC_URL}/imgs/Beauty/BETTER THAN CONTOUR/8-1024.webp`,
+      `${process.env.PUBLIC_URL}/imgs/Beauty/BETTER THAN CONTOUR/8-1024.webp`,
     ]
   },
   {
@@ -55,8 +55,8 @@ const MainPageImagea = [
       `${process.env.PUBLIC_URL}/imgs/Snap/1/1.webp`,
       `${process.env.PUBLIC_URL}/imgs/Snap/1/1-1536.webp`,
       `${process.env.PUBLIC_URL}/imgs/Snap/1/1-1024.webp`,
-      `${process.env.PUBLIC_URL}/imgs/Snap/1/1-768.webp`,
-      `${process.env.PUBLIC_URL}/imgs/Snap/1/1-480.webp`,
+      `${process.env.PUBLIC_URL}/imgs/Snap/1/1-1024.webp`,
+      `${process.env.PUBLIC_URL}/imgs/Snap/1/1-1024.webp`,
     ]
   },
   {
@@ -91,8 +91,8 @@ const MainPageImagea = [
       `${process.env.PUBLIC_URL}/imgs/Personal Work/8/1.webp`,
       `${process.env.PUBLIC_URL}/imgs/Personal Work/8/1-1536.webp`,
       `${process.env.PUBLIC_URL}/imgs/Personal Work/8/1-1024.webp`,
-      `${process.env.PUBLIC_URL}/imgs/Personal Work/8/1-768.webp`,
-      `${process.env.PUBLIC_URL}/imgs/Personal Work/8/1-480.webp`,
+      `${process.env.PUBLIC_URL}/imgs/Personal Work/8/1-1024.webp`,
+      `${process.env.PUBLIC_URL}/imgs/Personal Work/8/1-1024.webp`,
     ]
   },
   {
@@ -103,8 +103,8 @@ const MainPageImagea = [
       `${process.env.PUBLIC_URL}/imgs/Snap/2/9.webp`,
       `${process.env.PUBLIC_URL}/imgs/Snap/2/9-1536.webp`,
       `${process.env.PUBLIC_URL}/imgs/Snap/2/9-1024.webp`,
-      `${process.env.PUBLIC_URL}/imgs/Snap/2/9-768.webp`,
-      `${process.env.PUBLIC_URL}/imgs/Snap/2/9-480.webp`,
+      `${process.env.PUBLIC_URL}/imgs/Snap/2/9-1024.webp`,
+      `${process.env.PUBLIC_URL}/imgs/Snap/2/9-1024.webp`,
     ]
   },
   {
@@ -127,8 +127,8 @@ const MainPageImagea = [
       `${process.env.PUBLIC_URL}/imgs/Snap/1/3.webp`,
       `${process.env.PUBLIC_URL}/imgs/Snap/1/3-1536.webp`,
       `${process.env.PUBLIC_URL}/imgs/Snap/1/3-1024.webp`,
-      `${process.env.PUBLIC_URL}/imgs/Snap/1/3-768.webp`,
-      `${process.env.PUBLIC_URL}/imgs/Snap/1/3-480.webp`,
+      `${process.env.PUBLIC_URL}/imgs/Snap/1/3-1024.webp`,
+      `${process.env.PUBLIC_URL}/imgs/Snap/1/3-1024.webp`,
     ]
   },
   {
@@ -151,8 +151,8 @@ const MainPageImagea = [
       `${process.env.PUBLIC_URL}/imgs/Snap/1/16.webp`,
       `${process.env.PUBLIC_URL}/imgs/Snap/1/16-1536.webp`,
       `${process.env.PUBLIC_URL}/imgs/Snap/1/16-1024.webp`,
-      `${process.env.PUBLIC_URL}/imgs/Snap/1/16-768.webp`,
-      `${process.env.PUBLIC_URL}/imgs/Snap/1/16-480.webp`,
+      `${process.env.PUBLIC_URL}/imgs/Snap/1/16-1024.webp`,
+      `${process.env.PUBLIC_URL}/imgs/Snap/1/16-1024.webp`,
     ]
   },
   {
