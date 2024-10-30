@@ -13,7 +13,7 @@ const SlideAlert = lazy(() => import('../../component/Alert/SlideAlert'));
 
 function Project() {
   const navigate = useNavigate();
-  const goBack = () => navigate(-1);
+  const goBack = () => navigate(`/list?category=${encodeURIComponent(category)}`);
 
   const { title, category } = useParams();
   const [images, setImages] = useState([]);

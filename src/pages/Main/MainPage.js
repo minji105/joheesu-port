@@ -58,34 +58,72 @@ function MainPage() {
       }
     }
 
-    const handleTouch = (e) => e.changedTouches[0].screenY;
-
-    const addEventListeners = () => {
+    let touchStartY = 0;
+    let touchEndY = 0;
+    const handleTouchStart = (e) => {
+      touchStartY = e.changedTouches[0].screenY;
+    };
+    const handleTouchEnd = (e) => {
+      touchEndY = e.changedTouches[0].screenY;
+      handleGesture();
+    };
+    const handleGesture = () => {
+      if (touchEndY < touchStartY && !animating) {
+        gotoSection(currentIndex + 1, 1);
+      }
+      if (touchEndY > touchStartY && !animating) {
+        gotoSection(currentIndex - 1, -1);
+      }
+    };
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("touchend", handleTouchEnd);
       window.addEventListener('wheel', handleWheel);
 
-      let touchStartY = 0;
-      window.addEventListener('touchstart', (e) => {
-        touchStartY = handleTouch(e);
-      });
+    // const handleTouch = (e) => e.changedTouches[0].screenY;
 
-      window.addEventListener('touchend', (e) => {
-        const touchEndY = handleTouch(e);
-        if (!animating) {
-          const direction = touchEndY < touchStartY ? 1 : -1;
-          gotoSection(currentIndex + direction, direction);
-        }
-      });
-    };
+    // let removeEventListeners;
 
-    const removeEventListeners = () => {
-      window.removeEventListener('wheel', handleWheel);
-      window.removeEventListener('touch', handleTouch);
-    }
+    // const addEventListeners = () => {
+    //   window.addEventListener('wheel', handleWheel);
+
+    //   let touchStartY = 0;
+
+    //   const handleTouchStart = (e) => {
+    //     touchStartY = handleTouch(e);
+    //   };
+
+    //   const handleTouchEnd = (e) => {
+    //     const touchEndY = handleTouch(e);
+    //     if (!animating) {
+    //       const direction = touchEndY < touchStartY ? 1 : -1;
+    //       gotoSection(currentIndex + direction, direction);
+    //     }
+    //   };
+
+    //   window.addEventListener('touchstart', handleTouchStart);
+    //   window.addEventListener('touchend', handleTouchEnd);
+
+    //   removeEventListeners = () => {
+    //     window.removeEventListener('wheel', handleWheel);
+    //     window.removeEventListener('touchstart', handleTouchStart);
+    //     window.removeEventListener('touchend', handleTouchEnd);
+    //   };
+    // };
+
+    // const removeEventListeners = () => {
+    //   window.removeEventListener('wheel', handleWheel);
+    //   window.removeEventListener('touch', handleTouch);
+    // }
 
     gotoSection(0, 1);
-    addEventListeners();
+    // addEventListeners();
 
-    return () => removeEventListeners();
+    // return () => removeEventListeners();
+    return () => {
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchend", handleTouchEnd);
+      window.addEventListener('wheel', handleWheel);
+    };
   }, []);
 
   const handleSectionClick = (category, title) => {
@@ -145,7 +183,7 @@ const Section = ({ id, bgUrlArray, onClick }) => {
     };
 
     updateBgUrl();
-    window.addEventListener('resize', updateBgUrl); 
+    window.addEventListener('resize', updateBgUrl);
 
     return () => {
       window.removeEventListener('resize', updateBgUrl);
