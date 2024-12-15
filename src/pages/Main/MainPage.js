@@ -78,7 +78,7 @@ function MainPage() {
         gotoSection(currentIndex - 1, -1);
       }
     };
-    
+
     window.addEventListener("touchstart", handleTouchStart);
     window.addEventListener("touchend", handleTouchEnd);
     window.addEventListener('wheel', handleWheel);
@@ -161,7 +161,12 @@ const Section = ({ id, bgUrlArray, onClick }) => {
       <div className={styles.wrapperOuter}>
         <div className={styles.wrapperInner}>
           <Link to={'/list'}>
-            <div className={`${styles.background} mouse-hover`} style={{ backgroundImage: `url(${encodeURIComponent(bgUrl)})` }} />
+            <div
+              className={`${styles.background} mouse-hover`}
+              style={{ backgroundImage: `url(${encodeURIComponent(bgUrl)})` }}
+              role="link"
+              tabIndex="0"
+              aria-label="상세 페이지로 이동" />
           </Link>
         </div>
       </div>
