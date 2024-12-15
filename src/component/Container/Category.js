@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Category.module.scss';
-import CloseButton from '../Buttons/CloseButton';
 
 function Category({ selectedCategory }) {
   const navigate = useNavigate();
@@ -32,7 +31,7 @@ function Category({ selectedCategory }) {
       </p>
 
       <div className={`${styles.categoryContainer} ${categoryOpen ? styles.open : ''}`}>
-        <CloseButton onClick={toggleCategory} style={{ right: '0' }} />
+        <p className={styles.closeButton} onClick={toggleCategory}>&#10005;</p>
         {categories.map((category) => (
           <p
             key={category}

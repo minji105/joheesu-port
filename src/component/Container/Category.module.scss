@@ -64,3 +64,11 @@
     display: block;
   }
 }
+
+.closeButton {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: var(--padding-responsive);
+  font-size: 1rem;
+}
