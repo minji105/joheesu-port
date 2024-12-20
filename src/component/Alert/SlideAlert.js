@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styles from './SlideAlert.module.scss';
 import useMobileDetection from '../../hooks/useMobileDetection';
 
@@ -7,18 +7,15 @@ function SlideAlert({ direction, storageKey }) {
 
   const message = direction === 'vertical' ? 'Swipe up or down' : 'Swipe left or right';
 
-  const [shouldShow, setShouldShow] = useState(false);
-
   useEffect(() => {
     const hasSeenAlert = sessionStorage.getItem(storageKey);
     
     if (!hasSeenAlert) {
-      setShouldShow(true);
       sessionStorage.setItem(storageKey, 'true');
     }
   }, [storageKey]);
 
-  if (!isMobile || !shouldShow) {
+  if (!isMobile || sessionStorage.getItem(storageKey)) {
     return null;
   }
 

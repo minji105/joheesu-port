@@ -122,7 +122,7 @@ function Project() {
       {(!showGrid && slideIsOpen) && (
         <>
           <div className={styles.slideContainer} {...handlers}>
-            <Suspense>
+            <Suspense fallback={<div>Loading alert...</div>}>
               <SlideAlert direction="horizontal" storageKey="projectPageAlertShown" />
             </Suspense>
             <button onClick={prevImage} className={`${styles.arrow} ${styles.leftArrow}`}>&lt;</button>

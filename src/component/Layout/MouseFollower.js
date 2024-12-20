@@ -13,39 +13,6 @@ function MouseFollower() {
       setMousePos({ x: event.clientX, y: event.clientY });
     };
 
-    document.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
-
-  useEffect(() => {
-    const animateCursor = () => {
-      setCursorPos((prev) => {
-        const dx = mousePos.x - prev.x;
-        const dy = mousePos.y - prev.y;
-
-        return {
-          x: prev.x + dx * speed,
-          y: prev.y + dy * speed,
-        };
-      });
-
-      requestAnimationFrame(animateCursor);
-    };
-
-    animateCursor();
-  }, [mousePos]);
-
-  useEffect(() => {
-    if (cursorRef.current) {
-      cursorRef.current.style.left = `${cursorPos.x - 10}px`;
-      cursorRef.current.style.top = `${cursorPos.y - 10}px`;
-    }
-  }, [cursorPos]);
-
-  useEffect(() => {
     const handleMouseEnter = () => setIsHovering(true);
     const handleMouseLeave = () => setIsHovering(false);
 
@@ -55,13 +22,36 @@ function MouseFollower() {
       title.addEventListener('mouseleave', handleMouseLeave);
     });
 
+    document.addEventListener('mousemove', handleMouseMove);
+
     return () => {
       sectionTitles.forEach(title => {
         title.removeEventListener('mouseenter', handleMouseEnter);
         title.removeEventListener('mouseleave', handleMouseLeave);
       });
+
+      document.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
+
+  useEffect(() => {
+    const animateCursor = () => {
+      setCursorPos((prev) => ({
+        x: prev.x + (mousePos.x - prev.x) * speed,
+        y: prev.y + (mousePos.y - prev.y) * speed,
+      }));
+      requestAnimationFrame(animateCursor);
+    };
+  
+    animateCursor();
+  }, [mousePos]);
+
+  useEffect(() => {
+    if (cursorRef.current) {
+      cursorRef.current.style.left = `${cursorPos.x - 10}px`;
+      cursorRef.current.style.top = `${cursorPos.y - 10}px`;
+    }
+  }, [cursorPos]);
 
   return (
     <div className={`${styles.mouseFollower} ${isHovering ? styles.hovering : ''}`} ref={cursorRef}>

@@ -101,7 +101,7 @@ function MainPage() {
       <Logo />
       <MouseFollower />
 
-      <Suspense>
+      <Suspense fallback={<div>Loading alert...</div>}>
         <SlideAlert direction="vertical" storageKey="mainPageAlertShown" />
       </Suspense>
 

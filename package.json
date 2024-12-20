@@ -39,6 +39,7 @@
     ]
   },
   "devDependencies": {
+    "cra-bundle-analyzer": "^0.1.1",
     "css-minimizer-webpack-plugin": "^7.0.0",
     "eslint-config-react-app": "^7.0.1",
     "gh-pages": "^6.1.1",
