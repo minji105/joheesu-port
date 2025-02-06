@@ -10,7 +10,7 @@ function Contact() {
 
   useEffect(() => {
     const body = document.querySelector('body');
-    const header = document.querySelector(`.${headerStyles.projectHeader}`);
+    const header = document.querySelector(`.${headerStyles.projectHeader}`) as HTMLElement;
 
     if (header) {
       body.style.backgroundColor = '#f5f5f5';
@@ -27,7 +27,7 @@ function Contact() {
     }
   }, [])
 
-  const [copySuccess, setCopySuccess] = useState(false);
+  const [copySuccess, setCopySuccess] = useState<boolean>(false);
 
   const copyToClipboard = () => {
     const email = "abcde@gmail.com";

@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 
-const divideArrayIntoChunks = (array, chunkCount) => {
+interface DivideArrayProps {
+  array: any[],
+  chunkCount: number
+}
+
+export default function divideArrayIntoChunks({ array, chunkCount }: DivideArrayProps) {
   const chunks = Array.from({ length: chunkCount }, () => []);
   array.forEach((item, index) => {
     chunks[index % chunkCount].push(item);
@@ -8,8 +13,8 @@ const divideArrayIntoChunks = (array, chunkCount) => {
   return chunks;
 };
 
-export const useChunkCount = (initialChunkCount = 4) => {
-  const [chunkCount, setChunkCount] = useState(initialChunkCount);
+export function useChunkCount({ initialChunkCount = 4 }: { initialChunkCount: number }) {
+  const [chunkCount, setChunkCount] = useState<number>(initialChunkCount);
 
   useEffect(() => {
     const updateChunkCount = () => {
@@ -24,10 +29,7 @@ export const useChunkCount = (initialChunkCount = 4) => {
     updateChunkCount();
 
     return () => window.removeEventListener('resize', updateChunkCount);
-  }, [initialChunkCount, chunkCount]);
+  }, [chunkCount, initialChunkCount]);
 
   return chunkCount;
 }
-
-
-export default divideArrayIntoChunks;

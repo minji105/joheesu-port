@@ -11,15 +11,20 @@ import CopyrightBottom from '../../component/Layout/CopyrightBottom';
 
 const SlideAlert = lazy(() => import('../../component/Alert/SlideAlert'));
 
+interface Image {
+  img: string,
+  title: string
+}
+
 function Project() {
   const navigate = useNavigate();
   const goBack = () => navigate(`/list?category=${encodeURIComponent(category)}`);
 
   const { title, category } = useParams();
-  const [images, setImages] = useState([]);
-  const [slideIsOpen, setSlideIsOpen] = useState(false);
-  const [currentImageIndex, setcurrentImageIndex] = useState(0);
-  const [showGrid, setShowGrid] = useState(true);
+  const [images, setImages] = useState<Image[]>([]);
+  const [slideIsOpen, setSlideIsOpen] = useState<boolean>(false);
+  const [currentImageIndex, setcurrentImageIndex] = useState<number>(0);
+  const [showGrid, setShowGrid] = useState<boolean>(true);
 
   useEffect(() => {
     const imagesCount = imageCountData[category][title];
@@ -47,7 +52,7 @@ function Project() {
     loadImages();
   }, [title, category]);
 
-  const openSlide = (index) => {
+  const openSlide = (index: number) => {
     setcurrentImageIndex(index);
     setSlideIsOpen(true);
   }
@@ -65,20 +70,20 @@ function Project() {
     setSlideIsOpen((prevSlideIsOpen) => !prevSlideIsOpen);
   };
 
-  const handleOnClick = (chunkIndex, chunkCount, index) => {
-    toggleGrid(false);
+  const handleOnClick = (chunkIndex: number, chunkCount: number, index: number) => {
+    toggleGrid();
     openSlide(chunkIndex + chunkCount * index);
   };
 
   const handlers = useSwipeable({
     onSwipedLeft: nextImage,
     onSwipedRight: prevImage,
-    preventDefaultTouchmoveEvent: true,
+    preventScrollOnSwipe: true,
     trackMouse: true,
   });
 
-  const chunkCount = useChunkCount();
-  const chunkedImages = divideArrayIntoChunks(images, chunkCount);
+  const chunkCount = useChunkCount({ initialChunkCount: 4 });
+  const chunkedImages = divideArrayIntoChunks({ array: images, chunkCount });
 
   return (
     <>

@@ -17,13 +17,13 @@ function MainPage() {
     let sections = document.querySelectorAll(`.${styles.section}`),
       images = document.querySelectorAll(`.${styles.background}`),
       outerWrappers = document.querySelectorAll(`[class*="${styles.wrapperOuter}"]`),
-      innerWrappers = document.querySelectorAll(`[class*="${styles.wrapperInner}"]`);
+      innerWrappers = document.querySelectorAll(`${styles.wrapperInner}`);
 
     let currentIndex = -1;
-    let wrap = (index, max) => (index + max) % max;
-    let animating;
+    let wrap = (index: number, max: number) => (index + max) % max;
+    let animating: boolean;
 
-    const gotoSection = (index, direction) => {
+    const gotoSection = (index: number, direction: 1 | -1) => {
       index = wrap(index, sections.length);
       animating = true;
 
@@ -51,7 +51,7 @@ function MainPage() {
       setCurrentProject(MainPageImages[index]);
     }
 
-    const handleWheel = (event) => {
+    const handleWheel = (event: WheelEvent) => {
       if (!animating) {
         const direction = event.deltaY > 0 ? 1 : -1;
         gotoSection(currentIndex + direction, direction);
@@ -61,11 +61,11 @@ function MainPage() {
     let touchStartY = 0;
     let touchEndY = 0;
 
-    const handleTouchStart = (e) => {
+    const handleTouchStart = (e: TouchEvent) => {
       touchStartY = e.changedTouches[0].screenY;
     };
 
-    const handleTouchEnd = (e) => {
+    const handleTouchEnd = (e: TouchEvent) => {
       touchEndY = e.changedTouches[0].screenY;
       handleGesture();
     };
@@ -116,11 +116,10 @@ function MainPage() {
         <p>scroll</p>
       </div>
 
-      {MainPageImages.map((project, index) => (
+      {MainPageImages.map((project) => (
         <Section
           key={project.id}
           id={project.id}
-          title={project.title}
           bgUrlArray={project.bgurl}
           onClick={() => handleSectionClick(project.category, project.title)}
         />
@@ -165,7 +164,6 @@ const Section = ({ id, bgUrlArray, onClick }) => {
               className={`${styles.background} mouse-hover`}
               style={{ backgroundImage: `url(${encodeURIComponent(bgUrl)})` }}
               role="link"
-              tabIndex="0"
               aria-label="상세 페이지로 이동" />
           </Link>
         </div>

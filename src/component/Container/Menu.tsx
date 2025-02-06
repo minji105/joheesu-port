@@ -4,7 +4,7 @@ import styles from './Menu.module.scss';
 import Logo from '../Layout/Logo';
 
 function Menu() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
   const menuRef = useRef(null);
 
   const toggleMenu = () => {
@@ -16,7 +16,7 @@ function Menu() {
   };
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         closeMenu();
       }
@@ -38,7 +38,7 @@ function Menu() {
       <p className={styles.button} onClick={toggleMenu}>MENU</p>
 
       <div ref={menuRef} className={`${styles.container} ${menuOpen ? styles.open : ''}`}>
-        <Logo onClick={closeMenu}></Logo>
+        <Logo />
         <p className={styles.closeButton} onClick={closeMenu}>&#10005;</p>
         <div>
           <Link to='/' onClick={closeMenu}><p>Home</p></Link>

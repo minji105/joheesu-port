@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './ScrollTop.module.scss';
 
 const ScrollTop = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const toggleVisibility = () => {
     if (window.pageYOffset > 200) {

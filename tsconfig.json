@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM"],
+    "jsx": "preserve",
+    "esModuleInterop": true
+  }
+}

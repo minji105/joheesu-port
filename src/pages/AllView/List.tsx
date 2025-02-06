@@ -17,8 +17,8 @@ function List() {
     ? ProjectList
     : ProjectList.filter(item => item.category === selectedCategory);
 
-  const chunkCount = useChunkCount();
-  const chunkedImages = divideArrayIntoChunks(filteredData, chunkCount);
+  const chunkCount = useChunkCount({ initialChunkCount: 4 });
+  const chunkedImages = divideArrayIntoChunks({ array: filteredData, chunkCount });
 
   return (
     <>
@@ -60,7 +60,8 @@ function List() {
                       src={image.img.small}
                       alt={image.title}
                       onLoad={(e) => {
-                        const aspectRatio = e.target.naturalHeight / e.target.naturalWidth;
+                        const target = e.target as HTMLImageElement;
+                        const aspectRatio = target.naturalHeight / target.naturalWidth;
                         e.currentTarget.parentElement.style.paddingBottom = `${aspectRatio * 100}%`;
                       }}
                     />

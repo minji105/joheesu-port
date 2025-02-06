@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ProjectHeader.module.scss';
 
-function Header({ title }) {
+function Header({ title }: { title: string }) {
   return (
     <>
       <div className={styles.projectHeader}>

@@ -2,7 +2,12 @@ import React, { useEffect } from 'react';
 import styles from './SlideAlert.module.scss';
 import useMobileDetection from '../../hooks/useMobileDetection';
 
-function SlideAlert({ direction, storageKey }) {
+interface AlertProps {
+  direction: "vertical" | "horizontal",
+  storageKey: string
+}
+
+function SlideAlert({ direction, storageKey }: AlertProps) {
   const isMobile = useMobileDetection();
 
   const message = direction === 'vertical' ? 'Swipe up or down' : 'Swipe left or right';

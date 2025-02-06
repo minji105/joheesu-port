@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './Category.module.scss';
 
-function Category({ selectedCategory }) {
+function Category({ selectedCategory }: { selectedCategory: string }) {
   const navigate = useNavigate();
-  const [categoryOpen, setCategoryOpen] = useState(false);
+  const [categoryOpen, setCategoryOpen] = useState<boolean>(false);
 
   const categories = [
     'All',
