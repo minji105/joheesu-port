@@ -8,7 +8,7 @@ It was made responsive so that it can be viewed on mobile and PC.
 <img width="60%" src="https://github.com/user-attachments/assets/f85105dd-d664-4e83-b7a4-6ba644d23fe9" />
 <pre></pre>
 
-url: https://hsphotography.site/ (도메인 유효기간 만료로 접속이 불가합니다.)
+url: https://hsphotography.site/
 
 ## Tech Stack
 
@@ -55,4 +55,4 @@ GSAP
   <img width="20%" src="https://github.com/user-attachments/assets/16e10640-863d-4a56-acc4-622670e4ce5a">
 </div>
 
-1. 간단한 소개와 이메일, sns를 표시합니다. 이메일을 클릭하면 클립보드에 복사되도록 하였습니다.
+1. 이메일을 클릭하면 클립보드에 복사되도록 하였습니다.
